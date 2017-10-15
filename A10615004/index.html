@@ -1,1 +1,43 @@
-homework not found!!
+                                                   Chapter 2 Page tables
+
+頁表的工作原理：把用戶按照邏輯頁劃分成大小相等的部分，稱為頁。從零開始編制頁號，頁內地址是相對於0編址。使用簡單的頁面技巧，在幾個地址空間映射相同的內存，在未標明的頁面保護用戶堆棧。
+
+程式流程圖   
+    
+分頁硬件：     開始               創建地址空間：   開始                          物理內存分配器：     開始
+                                           
+               ↓                                   ↓                                                 ↓
+                  N
+              PTE →返回錯誤                  vmalloc(1840)                                          調用kinit1和kinit2來初始化分配器(3131)
+
+               ↓Y                                  ↓                                                 ↓
+ 
+              分頁硬件                        setup - kvm(1818)分配壹個內存頁                        調用freerange
+ 
+               ↓                                   ↓                                                 ↓
+
+             跟換地址前20位                   調用mappages來安裝內核需要的翻譯                       函數kfree(3164)                                      
+
+               ↓                                   ↓                                                 ↓                                    
+               
+              頁面                            調用walkpgdir查找地址                                   結束
+                 
+               ↓                                   ↓
+               
+              結束                                 結束       
+                      
+  
+
+  
+資料結構
+
+分頁硬件：分頁硬件使用虛擬地址的前10位來選擇壹個頁面目錄條目。如果頁面目錄條目存在，分頁硬件將使用虛擬地址的下10個字節，從頁目錄條目引用的頁面表頁面中選擇壹個PTE。每個PTE都包含標記位，它告訴分頁硬件如何使用相關的virp地址。在檔案（Page 1,Sheet 07)定義了MMU（內存管理單元）要用到的參數和結構體
+。
+ 
+進程地址空間：kvmalloc（）函數的功能是改變壹個新的頁面表，在檔案（Page 3,Sheet 18)裏它返回setupkvm()函數所生成的值；檔案（Page 1,Sheet 2)文件memory layout進行運算，將虛擬地址轉換為物理地址。
+
+創建地址空間：檔案（Page 3,Sheet 18)中setupkvm()分配壹個內存頁來保存頁面目錄；檔案（Page 2,Sheet 17)中mappages（）函數將映射到壹個頁面表中的壹系列虛擬地址到相應的物理地址範圍；檔案（Page 1，Sheet 17)中walkpgdir（）函數查找該地址的PTE地址。然後它初始化PTE以保存相關的物理頁號、所需的權限(PTE_W和/或PTE_U)，並將PTE_P標記為有效的PTE。              
+       
+代碼:sbrk：檔案（Page 3 ,Sheet 25)growproc（）函數分配壹個或多個物理頁面，並將它們映射到進程的地址空間的頂部。
+
+代碼:exec：檔案（Page 1,Sheet 66)中Exec()函數調用amei()函數打開命名的二進制路徑。檔案（Page 2,Sheet 66)的函數allocuvm()為每個ELF段分配內存，並使用loaduvm()將每個段裝入內存。檔案（Page 9,sheet 21)的copyout()函數將參數復制到堆棧中，將註意到無法訪問的目標頁面，並返回- 1。

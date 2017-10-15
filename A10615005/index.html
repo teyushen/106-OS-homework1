@@ -1,1 +1,160 @@
-homework not found!!
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OS_Homework_baohan</title>
+<style type="text/css">
+  	#runningMethod {
+    	font-size:20px;
+   	    background-color:#0FF;width:100% }
+	.myremark{
+		font-size:26px;
+		background-color:#CC0;
+		word-wrap:break-word;
+	    font-weight: bold;
+		width:100%;word-wrap:break-word; word-break:break-all;
+		}
+	.title{
+		font-size:30px;
+		background-color:#000;
+		color:#FFF;
+		}
+ 	.subtitle{
+		font-size:26px;
+		background-color:#000;
+		color:#FFF;
+		}
+	.foot{
+		background-color:#000;
+		color:#FFF
+		}
+</style>
+</head>
+<body>
+<center>
+<div class="title">
+CS3009301 Operating Systems<br/>
+Homework One 14/OCT/2017<br/>
+BaoHan（包含） A10615005</div>
+</center>
+<div id="runningMethod">
+<pre>
+<center>
+<div class="subtitle">
+Part 1：運作原理
+</div>
+</center>
+讀spinlock.c檔（帶行序號）：
+<i>1561 void
+1562 initlock(struct spinlock *lk, char *name)
+1563 {
+1564 lk−>name = name;
+1565 lk−>locked = 0;
+1566 lk−>cpu = 0;
+1567 }</i>
+<div class="myremark">
+initlock作用是對鎖進行初始化，當鎖初始化後，意味著</br>
+name、locked和cpu同樣被初始化。
+</div>
+1573 void
+1574 acquire(struct spinlock *lk)
+1575 {
+1576 pushcli(); 
+1577 if(holding(lk))
+1578 panic("acquire");
+1581 while(xchg(&lk−>locked, 1) != 0
+1582 ;
+1587 __sync_synchronize();
+1590 lk−>cpu = mycpu();
+1591 getcallerpcs(&lk, lk−>pcs);
+1592 }
+<div class="myremark">
+acquire作用是獲取鎖的操作。通過pushcli()這個函數</br>
+去檢查a鎖是否已經被a的CPU所佔有(其中，a可以是任意cpu的</br>
+代號)。我們把pushcil()函數列印出來。</br>
+</div>
+1654 void
+1655 pushcli(void)
+1656 {
+1657 int eflags;
+1658
+1659 eflags = readeflags();
+1660 cli();
+1661 if(mycpu()−>ncli == 0)
+1662 mycpu()−>intena = eflags & FL_IF;
+1663 mycpu()−>ncli += 1;
+1664 }
+<div class="myremark">
+我們注意到在pushcil()函數中使用了另一個函數cli()
+</div>
+0557 cli(void)
+0558 {
+0559 asm volatile("cli");
+0560 }
+<div class="myremark">
+此cli指令對其他程式沒有影響，只是把當前CPU的中斷。</br>
+在程式1581行的while將區域代碼不斷循環，直到獲取鎖為止。</br>
+xchg是通過cmpxchg獲取鎖。（xchg(value , newvalue)。）</br>
+作用是把記憶體地址value中的值和newvalue相互交換，返回記憶體</br>
+地址value中運行xchg之前的值。</br>
+locked=0標誌著現在這把鎖是空的，此時xchg(value,1)</br>
+返回0，使得跳出while迴圈，否則不斷在while中迴圈。</br>
+1590行是將獲得鎖的cpu地址記錄下來。</br>
+1591行是函數getcallerpcs記錄獲得鎖瞬間時函數棧。</br>
+我們再來看釋放鎖的過程
+</div>
+1601 void
+1602 release(struct spinlock *lk)
+1603 {
+1604 if(!holding(lk))
+1605 panic("release");
+1606
+1607 lk−>pcs[0] = 0;
+1608 lk−>cpu = 0;
+1615 __sync_synchronize();
+1620 asm volatile("movl $0, %0" : "+m" (lk−>locked) : );
+1621
+1622 popcli();
+1623 }
+<div class="myremark">
+第1604行首先判斷當前CPU是否已經有了這把鎖，</br>
+如果還沒有鎖，就報錯；如果確實有鎖，就把鎖釋放，</br>
+並刪除相應的的CPU記錄和函數調用棧。如果當前</br>
+CPU已經沒有拿任何鎖，那麼運行函數popcli將中斷打開。
+</div>
+<center>
+<div class="subtitle">
+程式流程
+</div>
+
+<b>[特別注意：本文檔圖片使用個人服務器作為外鏈源，若圖片無法顯示，請聯繫A10615005@ntust.edu.tw]</b>
+程式流程
+<img src="http://www.dmjsz.com/wp-content/uploads/2017/10/liu2.jpg" width="800" height="600" />
+
+流程圖
+<img src="http://www.dmjsz.com/wp-content/uploads/2017/10/liu1.jpg" width="500" height="1000" />
+</center>
+<center>
+<div class="subtitle">
+資料結構
+</div>
+</center>
+spinlock.h（1500行開始）定義的結構：
+struct spinlock {
+  uint locked;  
+   <div class="myremark">  //Locked用來表示一個狀態，顯示當前鎖是否已經被鎖上。</div>
+  char *name;    
+   <div class="myremark">  //name記錄鎖的名稱，通常可以用這個來標記用途。</div>
+  int  cpu;      
+   <div class="myremark">  // cpu記錄了取得這把鎖的cpu序號。</div>
+  uint pcs[10];  
+   <div class="myremark">  // Pcs記錄了在獲得鎖的瞬間，棧的內容是什麼。</div>
+ };
+</div>
+</body><center>
+<div class="foot">
+CS3009301 Operating Systems Homework One<br/>
+ Copyright &copy;2017 baohan
+</div>
+</center>
+</html>

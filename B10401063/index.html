@@ -1,1 +1,459 @@
-homework not found!!
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Build trap frame. - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,300italic,300|Source+Serif+Pro|Source+Code+Pro:400,300,500&subset=latin,latin-ext);.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\A0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:758px;margin-top:25px;margin-bottom:-25px;color:#777}.ui-toc{position:fixed;bottom:20px;z-index:10000}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,\\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3,Osaka,Meiryo,\\30E1\30A4\30EA\30AA,MS Gothic,"\FF2D\FF33   \30B4\30B7\30C3\30AF",sans-serif}.ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,"\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF",sans-serif}.markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang TC,Microsoft JhengHei,\\5FAE\8EDF\6B63\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,\\5FAE\8EDF\6B63\9ED1UI,sans-serif}.markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang SC,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,\\5FAE\8F6F\96C5\9ED1UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:contain}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}small span{line-height:22px}small .dropdown{display:inline-block}small .dropdown a:focus,small .dropdown a:hover{text-decoration:none}.unselectable{-moz-user-select:none;-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><p>Opera&amp;ng Systems Homework-1<br>
+Traps, interrupts, and drivers<br>
+B10401063 洪啟榮 四工管三甲<br>
+運作原理<br>
+作業系統在開始運行使用者進程的時候，內核便開始處於被動狀態，只有在出現以下幾種情況的時候才會觸發硬體機制陷入內核：（1）用戶代碼由於某種原因引發異常（例如除以0）;（2）硬體產生中斷並且沒有遮罩觸發中斷；（3）使用者代碼調用相關指令（例如x86體系下的int系統調用指令）主動陷入內核。以上三種情況便是異常、中斷、系統調用機制。這三種機制由於需要陷入內核所以在進入內核之前必須先保存現場，然後回到用戶環境的時候恢復現場，xv6對著三種機制都採用相同的處理方式陷入內核<br>
+保護現場：</p><p>![](<img src="https://i.imgur.com/VeYwTLh.png" alt=""></p><p>在x86體系下，這三種機制都會觸發相同的硬體操作，完成部分保護現場的任務，上圖中通過將部分暫存器值壓入堆疊來實現保護現場，如果觸發中斷（由於系統調用、中斷、異常具有相同的處理機制，所以一下全以中斷代稱）前處於內核態，則直接在當前state中保護現場，如果處於使用者態，則根據任務state描述符得到新的內核state並壓入用戶態的ss和esp。在硬體完成操作後，state中會得到以上資料。</p><p>x86規定了中斷、異常、系統調用的規範，在發生以上情況時，硬體能夠區分上述規定的256種觸發中斷的原因並通過尋找在記憶體中保存的中斷向量表來得到中斷處理常式的位址，然後將控制權交給中斷處理常式，這是x86架構下發生中斷時硬體完成的操作。</p><p>xv6通過一個存放函數指標的陣列來作為中斷向量表，在main函數初始化過程中，調用tvinit函數完成中斷向量表的初始化。tvinit將每一個中斷處理常式的位址寫入idt陣列中，idtinit將陣列位址載入中斷向量表暫存器，硬體能夠根據中斷向量表暫存器準確找出中斷處理常式，xv6使用vector.pl腳本生成vector陣列，vector陣列存放著每個中斷處理常式的入口位址，xv6簡單地將所有的中斷處理常式指向alltraps，由alltraps來負責具體的處理。在調用alltraps之前，xv6統一壓入errnum和trapnum來區分是256情況中的哪種。</p><p>void<br>
+tvinit(void)<br>
+{<br>
+int i;</p><p>for(i = 0; i &lt; 256; i++)<br>
+SETGATE(idt[i], 0, SEG_KCODE&lt;&lt;3, vectors[i], 0);<br>
+SETGATE(idt[T_SYSCALL], 1, SEG_KCODE&lt;&lt;3, vectors[T_SYSCALL], DPL_USER);</p><p>initlock(&amp;tickslock, “time”);<br>
+}</p><p>void<br>
+idtinit(void)<br>
+{<br>
+lidt(idt, sizeof(idt));<br>
+}</p><p>vector255:<br>
+pushl $0<br>
+pushl $255<br>
+jmp alltraps</p><p>alltraps繼續壓入暫存器保存現場，得到trapframe結構體，trapframe結構體如下所示，其中oesp沒有用處，這是pushal指令統一壓state的。</p><p>.globl alltraps<br>
+alltraps:</p><h1 id="build-trap-frame0"><a class="anchor hidden-xs" href="#build-trap-frame0" title="build-trap-frame0"><span class="octicon octicon-link"></span></a>Build trap frame.</h1><p>pushl %ds<br>
+pushl %es<br>
+pushl %fs<br>
+pushl %gs<br>
+pushal</p><p><img src="https://i.imgur.com/kqolKX5.png" alt=""></p><p>在這之後重新設置段暫存器，進入內核態，壓入當前stateesp，然後調用C函數trap處理中斷，在trap返回時，彈出esp然後trapret彈出暫存器恢復現場。</p><h1 id="set-up-data-and-per-cpu-segments0"><a class="anchor hidden-xs" href="#set-up-data-and-per-cpu-segments0" title="set-up-data-and-per-cpu-segments0"><span class="octicon octicon-link"></span></a>Set up data and per-cpu segments.</h1><p>movw $(SEG_KDATA&lt;&lt;3), %ax<br>
+movw %ax, %ds<br>
+movw %ax, %es</p><h1 id="call-traptf-where-tfesp0"><a class="anchor hidden-xs" href="#call-traptf-where-tfesp0" title="call-traptf-where-tfesp0"><span class="octicon octicon-link"></span></a>Call trap(tf), where tf=%esp</h1><p>pushl %esp<br>
+call trap<br>
+addl $4, %esp</p><h1 id="return-falls-through-to-trapret…0"><a class="anchor hidden-xs" href="#return-falls-through-to-trapret…0" title="return-falls-through-to-trapret…0"><span class="octicon octicon-link"></span></a>Return falls through to trapret…</h1><p>.globl trapret<br>
+trapret:<br>
+popal<br>
+popl %gs<br>
+popl %fs<br>
+popl %es<br>
+popl %ds<br>
+addl $0x8, %esp  # trapno and errcode<br>
+iret</p><p>在調用trap時由於trap是c函數所以會在state上壓入返回位元址eip和部分寄存值構成context結構，如下：</p><p>struct context {<br>
+uint edi;<br>
+uint esi;<br>
+uint ebx;<br>
+uint ebp;<br>
+uint eip;<br>
+};</p><p>之所以會重複壓入部分暫存器的值是應為Intel規定esi，ebx，esi是被調用者保存暫存器，需要由被調用者保存，而ebp則是c函數中維護每個函數state幀用的，eip是call指令壓state的，也就是說，當call指令執行後會執行以上動作才跳入trap函數體</p><p>暫存器使用慣例</p><p>在trap執行ret指令返回之前會彈出context恢復state的調用前狀態。</p><p>明確context結構能夠使我們很容易理解進程調用時，通過切換上下文context，很容易便能實現切換進程的目的，因為任何C函數的調用都會形成context結構，在進程調度時通過切換context結構，很容易使得函數返回時返回到另一個進程中去</p><p>實際調度的情況是這樣的，當把當前進程上下文切換至另一個context上下文時，調度器會手動彈出context結構來類比函數返回的情形，當彈出eip的時候就意味著回到了就緒進程的下一條指令中來。這樣便能實現進程的切換。</p><p>第一次運行進程</p><p>通過自建一個“現場”來類比返回第一個進程，手動寫入了trapframe和context結構的上下文來讓調度器調度並返回使用者進程，這些操作由allocproc負責，allocproc手動構建內核state並寫入內核暫存器來構成進程第一次運行的“現場”，如下面代碼所示：</p><p>// Allocate kernel stack.<br>
+if((p-&gt;kstack = kalloc()) == 0){<br>
+p-&gt;state = UNUSED;<br>
+return 0;<br>
+}<br>
+sp = p-&gt;kstack + KSTACKSIZE;</p><p>// Leave room for trap frame.<br>
+sp -= sizeof <em>p-&gt;tf;<br>
+p-&gt;tf = (struct trapframe</em>)sp;</p><p>// Set up new context to start executing at forkret,<br>
+// which returns to trapret.<br>
+sp -= 4;<br>
+<em>(uint</em>)sp = (uint)trapret;</p><p>sp -= sizeof <em>p-&gt;context;<br>
+p-&gt;context = (struct context</em>)sp;<br>
+memset(p-&gt;context, 0, sizeof *p-&gt;context);<br>
+p-&gt;context-&gt;eip = (uint)forkret;</p><p>allocproc在“正常現場”中本應該壓入esp的地方壓入trapret，trapret處的代碼負責彈出暫存器恢復現場，然後在本應該是trap返回位址的地方壓入forkret的位址並將context的內容置零，通過這種方式，調度器在調度的時候手動彈出context，但是此時彈出的eip並不是trap的返回地址而是forkret，forkret返回時彈出壓入的trapret恢復現場，這樣進程第一次便開始運行了。</p><p>進程第一次運行時的現場如下：</p><p><img src="https://i.imgur.com/B58hmy8.png" alt=""></p><p>第一個使用者進程</p><p>在 main 初始化了一些設備和子系統後，它通過調用 userinit建立了第一個進程。userinit首先調用上面講的allocproc來創建進程的內核state，來完成進程運行的必要環境。userinit 僅僅在創建第一個進程時被調用，而 allocproc 創建每個進程時都會被調用。然後userinit設置全域靜態變數initproc的值，設置頁表中的內核態映射，然後調用inituvm將initcode.S移動到虛擬位址0處，並設置頁表，然後為trapframe賦 初始值，最後使p-&gt;state設置為RUNNABLE狀態，以便調度器能夠調度運行。</p><p>initcode.S剛開始會將 argv，init，0 三個值推入state中，接下來把 %eax 設置為 SYS_exec 然後執行 int T_SYSCALL：這樣做是告訴內核運行 exec 這個系統調用。如果運行正常的話，exec 不會返回：它會運行名為 init 的程式，init 是一個以空字元結尾的字串，即 /init。如果 exec 失敗並且返回了，initcode 會不斷調用一個不會返回的系統調用 exit 。</p><p>系統調用 exec 的參數是 init、argv。最後的0讓這個手動構建的系統調用看起來就像普通的系統調用一樣。和之前的代碼一樣，避免為第一個進程的運行單獨寫一段代碼，而是儘量使用通用于普通操作的代碼。</p><p>現在 initcode 已經執行完了，進程將要運行 /init。 init會在需要的情況下創建一個新的控制台設備檔，然後把它作為描述符0，1，2打開。接下來它將不斷迴圈，開啟控制台 shell，處理沒有父進程的僵屍進程，直到 shell 退出，然後再反復。系統就這樣建立起來了。</p><p>C中斷處理常式trap</p><p>trap函數主要根據trapframe中的trapno來確定到底是哪種原因導致中斷的發生，如果是系統調用，則通過調用syscall函數負責具體的系統調用處理</p><p>if(tf-&gt;trapno == T_SYSCALL){<br>
+if(proc-&gt;killed)<br>
+exit();<br>
+proc-&gt;tf = tf;<br>
+syscall();<br>
+if(proc-&gt;killed)<br>
+exit();<br>
+return;<br>
+}</p><p>在這裡處理proc-&gt;killed的原因是kill系統調用的需要，kill系統調用通過將killed置1，來殺死一個進程，由於遲早進程會由於系統調用或者時鐘中斷進入trap，此時trap檢查到killed置1便能夠將進程殺死。</p><p>這裡重新更新了tf的位址，這樣做的原因是trapframe的大小由於可能硬體未壓入ss和esp導致不一致，而任務statets總是指向內核state所在頁的最高地址處：</p><p>cpu-&gt;ts.esp0 = (uint)proc-&gt;kstack + KSTACKSIZE;<br>
+proc-&gt;tf最開始的賦值是按照大小包括esp和ss來的，在allocproc中：<br>
+p-&gt;tf = (struct trapframe*)sp;</p><p>所以在這裡重新設置了tf的位址。</p><p>如果中斷產生的原因是硬體中斷或者異常，trap則調用相應的函數來進行處理：<br>
+switch(tf-&gt;trapno){<br>
+case T_IRQ0 + IRQ_TIMER:<br>
+if(cpunum() == 0){<br>
+acquire(&amp;tickslock);<br>
+ticks++;<br>
+wakeup(&amp;ticks);<br>
+release(&amp;tickslock);<br>
+}<br>
+lapiceoi();<br>
+break;<br>
+case T_IRQ0 + IRQ_IDE:<br>
+ideintr();<br>
+lapiceoi();<br>
+break;<br>
+case T_IRQ0 + IRQ_IDE+1:<br>
+// Bochs generates spurious IDE1 interrupts.<br>
+break;<br>
+case T_IRQ0 + IRQ_KBD:<br>
+kbdintr();<br>
+lapiceoi();<br>
+break;<br>
+case T_IRQ0 + IRQ_COM1:<br>
+uartintr();<br>
+lapiceoi();<br>
+break;<br>
+case T_IRQ0 + 7:<br>
+case T_IRQ0 + IRQ_SPURIOUS:<br>
+cprintf(“cpu%d: spurious interrupt at %x:%x\n”,<br>
+cpunum(), tf-&gt;cs, tf-&gt;eip);<br>
+lapiceoi();<br>
+break;</p><p>//PAGEBREAK: 13<br>
+default:<br>
+if(proc == 0 || (tf-&gt;cs&amp;3) == 0){<br>
+// In kernel, it must be our mistake.<br>
+cprintf(“unexpected trap %d from cpu %d eip %x (cr2=0x%x)\n”,<br>
+tf-&gt;trapno, cpunum(), tf-&gt;eip, rcr2());<br>
+panic(“trap”);<br>
+}<br>
+// In user space, assume process misbehaved.<br>
+cprintf("pid %d %s: trap %d err %d on cpu %d "<br>
+“eip 0x%x addr 0x%x–kill proc\n”,<br>
+proc-&gt;pid, proc-&gt;name, tf-&gt;trapno, tf-&gt;err, cpunum(), tf-&gt;eip,<br>
+rcr2());<br>
+proc-&gt;killed = 1;</p><p>系統調用實現機制</p><p>syscall通過trapframe中的eax來確定系統調用號以決定調用那個系統函數，當然eax的值或許是庫函數在調用int指令的時候設置的，只是保護現場使得存放在了trapframe中，然後通過系統調用號調用具體的系統調用處理函數並返回到trapframe中的eax位置，這樣恢復現場時庫函數便能根據eax得到系統調用的返回值</p><p>oid<br>
+syscall(void)<br>
+{<br>
+int num;</p><p>num = proc-&gt;tf-&gt;eax;<br>
+if(num &gt; 0 &amp;&amp; num &lt; NELEM(syscalls) &amp;&amp; syscalls[num]) {<br>
+proc-&gt;tf-&gt;eax = syscalls<a href="" target="_blank">num</a>;<br>
+} else {<br>
+cprintf("%d %s: unknown sys call %d\n",<br>
+proc-&gt;pid, proc-&gt;name, num);<br>
+proc-&gt;tf-&gt;eax = -1;<br>
+}<br>
+}</p><p>具體的系統調用如下：</p><p>static int (*syscalls[])(void) = {<br>
+[SYS_fork]    sys_fork,<br>
+[SYS_exit]    sys_exit,<br>
+[SYS_wait]    sys_wait,<br>
+[SYS_pipe]    sys_pipe,<br>
+[SYS_read]    sys_read,<br>
+[SYS_kill]    sys_kill,<br>
+[SYS_exec]    sys_exec,<br>
+[SYS_fstat]   sys_fstat,<br>
+[SYS_chdir]   sys_chdir,<br>
+[SYS_dup]     sys_dup,<br>
+[SYS_getpid]  sys_getpid,<br>
+[SYS_sbrk]    sys_sbrk,<br>
+[SYS_sleep]   sys_sleep,<br>
+[SYS_uptime]  sys_uptime,<br>
+[SYS_open]    sys_open,<br>
+[SYS_write]   sys_write,<br>
+[SYS_mknod]   sys_mknod,<br>
+[SYS_unlink]  sys_unlink,<br>
+[SYS_link]    sys_link,<br>
+[SYS_mkdir]   sys_mkdir,<br>
+[SYS_close]   sys_close,<br>
+};</p><p>參數或許是庫函數在陷入內核前壓state的，所以可以根據trapframe中的使用者stateesp來找到各種參數，使用了工具函數 argint、argptr 和 argstr來獲得第 n 個系統調用參數</p><p>他們分別用於獲取整數，指標和字串起始位址。argint 利用用戶空間的 %esp 寄存器定位第 n 個參數：%esp 指向系統調用結束後的返回位址。參數就恰好在 %esp 之上（%esp+4）。因此第 n 個參數就在 %esp+4+4*n。</p><p>argint 調用 fetchint 從使用者記憶體位址讀取值到 *ip。fetchint 可以簡單地將這個位址直接轉換成一個指標，因為用戶和內核共用同一個頁表，但是內核必須檢驗這個指標的確指向的是使用者記憶體空間的一部分。內核已經設置好了頁表來保證本進程無法訪問它的私有位址以外的記憶體：如果一個用戶嘗試讀或者寫高於（包含）p-&gt;sz的位址，處理器會產生一個段中斷，這個中斷會殺死此進程，正如我們之前所見。但是現在，我們在內核態中執行，用戶提供的任何位址都是有權訪問的，因此必須要檢查這個位址是在 p-&gt;sz 之下的。</p><p>argptr 和 argint 的目標是相似的：它解析第 n 個系統調用參數。argptr 調用 argint 來把第 n 個參數當做是整數來獲取，然後把這個整數看做指標，檢查它的確指向的是用戶位址空間。argptr 的源碼中有兩次檢查。首先，用戶的state指標在獲取參數的時候被檢查。然後這個獲取到得參數作為用戶指標又經過了一次檢查。</p><p>argstr 是最後一個用於獲取系統調用參數的函數。它將第 n 個系統調用參數解析為指標。它確保這個指標是一個 NUL 結尾的字串並且整個完整的字串都在使用者位址空間中。</p><p>系統調用的實現（例如，sysproc.c 和 sysfile.c）僅僅是封裝而已：他們用 argint，argptr 和 argstr 來解析參數，然後調用真正的實現。</p><p>// User code makes a system call with INT T_SYSCALL.<br>
+// System call number in %eax.<br>
+// Arguments on the stack, from the user call to the C<br>
+// library system call function. The saved user %esp points<br>
+// to a saved program counter, and then the first argument.</p><p>// Fetch the int at addr from the current process.<br>
+int<br>
+fetchint(uint addr, int *ip)<br>
+{<br>
+if(addr &gt;= proc-&gt;sz || addr+4 &gt; proc-&gt;sz)<br>
+return -1;<br>
+*ip = <em>(int</em>)(addr);<br>
+return 0;<br>
+}</p><p>// Fetch the nul-terminated string at addr from the current process.<br>
+// Doesn’t actually copy the string - just sets *pp to point at it.<br>
+// Returns length of string, not including nul.<br>
+int<br>
+fetchstr(uint addr, char **pp)<br>
+{<br>
+char *s, *ep;</p><p>if(addr &gt;= proc-&gt;sz)<br>
+return -1;<br>
+<em>pp = (char</em>)addr;<br>
+ep = (char*)proc-&gt;sz;<br>
+for(s = *pp; s &lt; ep; s++)<br>
+if(*s == 0)<br>
+return s - *pp;<br>
+return -1;<br>
+}</p><p>// Fetch the nth 32-bit system call argument.<br>
+int<br>
+argint(int n, int <em>ip)<br>
+{<br>
+return fetchint(proc-&gt;tf-&gt;esp + 4 + 4</em>n, ip);<br>
+}</p><p>// Fetch the nth word-sized system call argument as a pointer<br>
+// to a block of memory of size bytes.  Check that the pointer<br>
+// lies within the process address space.<br>
+int<br>
+argptr(int n, char **pp, int size)<br>
+{<br>
+int i;</p><p>if(argint(n, &amp;i) &lt; 0)<br>
+return -1;<br>
+if(size &lt; 0 || (uint)i &gt;= proc-&gt;sz || (uint)i+size &gt; proc-&gt;sz)<br>
+return -1;<br>
+<em>pp = (char</em>)i;<br>
+return 0;<br>
+}</p><p>// Fetch the nth word-sized system call argument as a string pointer.<br>
+// Check that the pointer is valid and the string is nul-terminated.<br>
+// (There is no shared writable memory, so the string can’t change<br>
+// between this check and being used by the kernel.)<br>
+int<br>
+argstr(int n, char **pp)<br>
+{<br>
+int addr;<br>
+if(argint(n, &amp;addr) &lt; 0)<br>
+return -1;<br>
+return fetchstr(addr, pp);<br>
+}</p><p>程式流程</p><p><img src="https://i.imgur.com/5gigozs.png" alt=""></p><p>資料結構<br>
+2326 struct context {<br>
+2327 uint edi;<br>
+2328 uint esi;<br>
+2329 uint ebx;<br>
+2330 uint ebp;<br>
+2331 uint eip;<br>
+2332 };</p><p>struct trapframe {<br>
+0603 // registers as pushed by pusha<br>
+0604 uint edi;<br>
+0605 uint esi;<br>
+0606 uint ebp;<br>
+0607 uint oesp; // useless &amp; ignored<br>
+0608 uint ebx;<br>
+0609 uint edx;<br>
+0610 uint ecx;<br>
+0611 uint eax;<br>
+0612<br>
+0613 // rest of trap frame<br>
+0614 ushort gs;<br>
+0615 ushort padding1;<br>
+0616 ushort fs;<br>
+0617 ushort padding2;<br>
+0618 ushort es;<br>
+0619 ushort padding3;<br>
+0620 ushort ds;<br>
+0621 ushort padding4;<br>
+0622 uint trapno;<br>
+0623<br>
+0624 // below here defined by x86 hardware<br>
+0625 uint err;<br>
+0626 uint eip;<br>
+0627 ushort cs;<br>
+0628 ushort padding5;<br>
+0629 uint eflags;<br>
+0630<br>
+0631 // below here only when crossing rings, such as from user to kernel<br>
+0632 uint esp;<br>
+0633 ushort ss;<br>
+0634 ushort padding6;<br>
+0635 };</p><p>代碼解釋<br>
+3226 #define T_SYSCALL 64 // system call</p><p>0921 #define SETGATE(gate, istrap, sel, off, d) <br>
+0922 { <br>
+0923 (gate).off_15_0 = (uint)(off) &amp; 0xffff; <br>
+0924 (gate).cs = (sel); <br>
+0925 (gate).args = 0; <br>
+0926 (gate).rsv1 = 0; <br>
+0927 (gate).type = (istrap) ? STS_TG32 : STS_IG32; <br>
+0928 (gate).s = 0; <br>
+0929 (gate).dpl = (d); <br>
+0930 (gate).p = 1; <br>
+0931 (gate).off_31_16 = (uint)(off) &gt;&gt; 16; <br>
+0932 }</p><p>0742 #define SEG_KCODE 1 // kernel code</p><p>0525 static inline void<br>
+0526 lidt(struct gatedesc *p, int size)<br>
+0527 {<br>
+0528 volatile ushort pd[3];<br>
+0529<br>
+0530 pd[0] = size−1;<br>
+0531 pd[1] = (uint)p;<br>
+0532 pd[2] = (uint)p &gt;&gt; 16;<br>
+0533<br>
+0534 asm volatile(“lidt (%0)” : : “r” (pd));<br>
+0535 }</p><p>0743 #define SEG_KDATA 2 // kernel data+stack</p><p>0151 #define KSTACKSIZE 4096 // size of per−process kernel stack<br>
+0151 #define KSTACKSIZE 4096 // size of per−process kernel stack</p><p>3229 #define T_IRQ0 32 // IRQ 0 corresponds to int T_IRQ</p><p>0442 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))<br>
+<img src="https://" alt=""></p><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav"><li class=""><a href="#build-trap-frame0">Build trap frame.</a></li><li><a href="#set-up-data-and-per-cpu-segments0">Set up data and per-cpu segments.</a></li><li><a href="#call-traptf-where-tfesp0">Call trap(tf), where tf=%esp</a></li><li><a href="#return-falls-through-to-trapret…0">Return falls through to trapret…</a></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        <div class="toc"><ul class="nav"><li class=""><a href="#build-trap-frame0">Build trap frame.</a></li><li><a href="#set-up-data-and-per-cpu-segments0">Set up data and per-cpu segments.</a></li><li><a href="#call-traptf-where-tfesp0">Call trap(tf), where tf=%esp</a></li><li><a href="#return-falls-through-to-trapret…0">Return falls through to trapret…</a></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>

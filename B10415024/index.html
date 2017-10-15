@@ -1,1 +1,728 @@
-homework not found!!
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        HackMD - Collaborative markdown notes
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,300italic,300|Source+Serif+Pro|Source+Code+Pro:400,300,500&subset=latin,latin-ext);.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\A0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:758px;margin-top:25px;margin-bottom:-25px;color:#777}.ui-toc{position:fixed;bottom:20px;z-index:10000}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,\\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3,Osaka,Meiryo,\\30E1\30A4\30EA\30AA,MS Gothic,"\FF2D\FF33   \30B4\30B7\30C3\30AF",sans-serif}.ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,"\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF",sans-serif}.markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang TC,Microsoft JhengHei,\\5FAE\8EDF\6B63\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,\\5FAE\8EDF\6B63\9ED1UI,sans-serif}.markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang SC,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,\\5FAE\8F6F\96C5\9ED1UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:contain}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}small span{line-height:22px}small .dropdown{display:inline-block}small .dropdown a:focus,small .dropdown a:hover{text-decoration:none}.unselectable{-moz-user-select:none;-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><p>作業系統報告<br>
+四資工三			  			B10415024			 	   	廖珮均</p><p>Chaper 2</p><p>Page tables<br>
+Page tables是作業系統控制記憶體位址的機制。它們允許xv6在一個實體記憶體上有多個不同process的記憶體空間，和去保護不同process的記憶體。<br>
+配對kernel相同的記憶體在很多的記憶體空間，配對多於一個的相同的記憶體在一個記憶體空間，用一個沒配對的page保護一個使用者堆疊。</p><p>Paging hardware<br>
+X86指令操作虛擬地址。機器的RAM或是實體記憶體被實體地址索引。X86 page table硬體連接兩種地址，藉由配對每一個虛擬地址到時地址。<br>
+一個x86 page table是2^20 (1,048,576) page table entries(PTEs)。每一個PTE包含一個20bits實體page number(PPN)和一些旗幟。這個paging硬體藉由它的前20bits到page table去尋找PTE來翻譯一個虛擬地址，和取代地址的前20bis和在PTE的PPN。Page 硬體從虛擬到翻譯的實體地址不變地複製後面12bits。因此page table給作業系統控制在虛擬到實體地址翻譯在對齊的粒度4096bytes的chunks。每一個chunk稱為一個page。<br>
+一個page table像兩層樹被儲存在實體記憶體。樹的根是一個4096bytes的page directory包含1024 PTE-like 引用到page table pages。每一個page table page是一個1024 32bits PTEs的陣列。Paging硬體使用虛擬地址的前10bits去選擇一個PTE從page table page是page directory引用。如果不是page directory進入也不是PTE，paging 硬體造成一個錯誤。這個兩層的結構允許一個page table去忽略全部的page table pages在常態大範圍的虛擬記憶體沒有配對。<br>
+每個PTE包含旗幟的bit來告訴paging硬體如何相關虛擬地址被允許使用。PTE_P指是否PTE是當下：如果它沒有設定，一個參考到page造成一個錯誤。PTE_W控制指令是否被允許去寫入page；如果沒有設定，只有讀和取指令被允許。PTE_U控制使用者程式是否允許去使用page；如果清楚，只有kernel被允許去使用Page。旗標和所有其他page硬體相關結構被定義在<br>
+Mmu.h(0700):<br>
+//檔案包含定義x86記憶體管理單元(MMU)</p><p>// Eflags register<br>
+#define FL_CF 0x00000001 // Carry Flag<br>
+#define FL_PF 0x00000004 // Parity Flag<br>
+#define FL_AF 0x00000010 // Auxiliary carry Flag<br>
+#define FL_ZF 0x00000040 // Zero Flag<br>
+#define FL_SF 0x00000080 // Sign Flag<br>
+#define FL_TF 0x00000100 // Trap Flag<br>
+#define FL_IF 0x00000200 // Interrupt Enable<br>
+#define FL_DF 0x00000400 // Direction Flag<br>
+#define FL_OF 0x00000800 // Overflow Flag<br>
+#define FL_IOPL_MASK 0x00003000 // I/O Privilege Level bitmask<br>
+#define FL_IOPL_0 0x00000000 // IOPL == 0<br>
+#define FL_IOPL_1 0x00001000 // IOPL == 1<br>
+#define FL_IOPL_2 0x00002000 // IOPL == 2<br>
+#define FL_IOPL_3 0x00003000 // IOPL == 3<br>
+#define FL_NT 0x00004000 // Nested Task<br>
+#define FL_RF 0x00010000 // Resume Flag<br>
+#define FL_VM 0x00020000 // Virtual 8086 mode<br>
+#define FL_AC 0x00040000 // Alignment Check<br>
+#define FL_VIF 0x00080000 // Virtual Interrupt Flag<br>
+#define FL_VIP 0x00100000 // Virtual Interrupt Pending<br>
+#define FL_ID 0x00200000 // ID flag</p><p>// Control Register flags<br>
+#define CR0_PE 0x00000001 // Protection Enable<br>
+#define CR0_MP 0x00000002 // Monitor coProcessor<br>
+#define CR0_EM 0x00000004 // Emulation<br>
+#define CR0_TS 0x00000008 // Task Switched<br>
+#define CR0_ET 0x00000010 // Extension Type<br>
+#define CR0_NE 0x00000020 // Numeric Errror<br>
+#define CR0_WP 0x00010000 // Write Protect<br>
+#define CR0_AM 0x00040000 // Alignment Mask<br>
+#define CR0_NW 0x20000000 // Not Writethrough<br>
+#define CR0_CD 0x40000000 // Cache Disable<br>
+#define CR0_PG 0x80000000 // Paging</p><p>#define CR4_PSE 0x00000010 // Page size extension</p><p>// 不同片段選擇<br>
+#define SEG_KCODE 1 // kernel code<br>
+#define SEG_KDATA 2 // kernel data+stack<br>
+#define SEG_UCODE 3 // user code<br>
+#define SEG_UDATA 4 // user data+stack<br>
+#define SEG_TSS 5 // this process’s task state</p><p>// cpu−&gt;gdt[NSEGS] 保存以上的片段.<br>
+#define NSEGS 6<br>
+#ifndef <strong>ASSEMBLER</strong><br>
+// Segment Descriptor<br>
+struct segdesc {<br>
+uint lim_15_0 : 16; // Low bits of segment limit<br>
+uint base_15_0 : 16; // Low bits of segment base address<br>
+uint base_23_16 : 8; // Middle bits of segment base address<br>
+uint type : 4; // Segment type (see STS_ constants)<br>
+uint s : 1; // 0 = system, 1 = application<br>
+uint dpl : 2; // Descriptor Privilege Level<br>
+uint p : 1; // Present<br>
+uint lim_19_16 : 4; // High bits of segment limit<br>
+uint avl : 1; // Unused (available for software use)<br>
+uint rsv1 : 1; // Reserved<br>
+uint db : 1; // 0 = 16−bit segment, 1 = 32−bit segment<br>
+uint g : 1; // Granularity: limit scaled by 4K when set<br>
+uint base_31_24 : 8; // High bits of segment base address<br>
+};</p><p>// Normal segment<br>
+#define SEG(type, base, lim, dpl) (struct segdesc) <br>
+{ ((lim) &gt;&gt; 12) &amp; 0xffff, (uint)(base) &amp; 0xffff, <br>
+((uint)(base) &gt;&gt; 16) &amp; 0xff, type, 1, dpl, 1, <br>
+(uint)(lim) &gt;&gt; 28, 0, 0, 1, 1, (uint)(base) &gt;&gt; 24 }<br>
+#define SEG16(type, base, lim, dpl) (struct segdesc) <br>
+{ (lim) &amp; 0xffff, (uint)(base) &amp; 0xffff, <br>
+((uint)(base) &gt;&gt; 16) &amp; 0xff, type, 1, dpl, 1, <br>
+(uint)(lim) &gt;&gt; 16, 0, 0, 1, 0, (uint)(base) &gt;&gt; 24 }<br>
+#endif</p><p>#define DPL_USER 0x3 // User DPL</p><p>// Application segment type bits<br>
+#define STA_X 0x8 // 可執行片段<br>
+#define STA_E 0x4 // Expand down (non−executable segments)<br>
+#define STA_C 0x4 // Conforming code segment (executable only)<br>
+#define STA_W 0x2 // 可寫(non−executable segments)<br>
+#define STA_R 0x2 // 可讀(executable segments)<br>
+#define STA_A 0x1 // Accessed</p><p>// System segment type bits<br>
+#define STS_T16A 0x1 // Available 16−bit TSS<br>
+#define STS_LDT 0x2 // Local Descriptor Table<br>
+#define STS_T16B 0x3 // Busy 16−bit TSS<br>
+#define STS_CG16 0x4 // 16−bit Call Gate<br>
+#define STS_TG 0x5 // Task Gate / Coum Transmitions<br>
+#define STS_IG16 0x6 // 16−bit Interrupt Gate<br>
+#define STS_TG16 0x7 // 16−bit Trap Gate<br>
+#define STS_T32A 0x9 // Available 32−bit TSS<br>
+#define STS_T32B 0xB // Busy 32−bit TSS<br>
+#define STS_CG32 0xC // 32−bit Call Gate<br>
+#define STS_IG32 0xE // 32−bit Interrupt Gate<br>
+#define STS_TG32 0xF // 32−bit Trap Gate</p><p>// 虛擬地址 ’la’ 有三個部分:<br>
+//<br>
+// +−−−−−−−−10−−−−−−+−−−−−−−10−−−−−−−+−−−−−−−−−12−−−−−−−−−−+<br>
+// | Page Directory | Page Table | Offset within Page |<br>
+// | Index | Index | |<br>
+// +−−−−−−−−−−−−−−−−+−−−−−−−−−−−−−−−−+−−−−−−−−−−−−−−−−−−−−−+<br>
+// \−−− PDX(va) −−/ \−−− PTX(va) −−/</p><p>// page directory index<br>
+#define PDX(va) (((uint)(va) &gt;&gt; PDXSHIFT) &amp; 0x3FF)</p><p>// page table index<br>
+#define PTX(va) (((uint)(va) &gt;&gt; PTXSHIFT) &amp; 0x3FF)</p><p>//從indexes and offset建構虛擬地址<br>
+#define PGADDR(d, t, o) ((uint)((d) &lt;&lt; PDXSHIFT | (t) &lt;&lt; PTXSHIFT | (o)))</p><p>// Page directory and page table constants.<br>
+#define NPDENTRIES 1024 // # directory entries per page directory<br>
+#define NPTENTRIES 1024 // # PTEs per page table<br>
+#define PGSIZE 4096 // bytes mapped by a page</p><p>#define PGSHIFT 12 // log2(PGSIZE)<br>
+#define PTXSHIFT 12 // offset of PTX in a linear address<br>
+#define PDXSHIFT 22 // offset of PDX in a linear address</p><p>#define PGROUNDUP(sz) (((sz)+PGSIZE−1) &amp; ~(PGSIZE−1))<br>
+#define PGROUNDDOWN(a) (((a)) &amp; ~(PGSIZE−1))</p><p>// Page table/directory entry flags.<br>
+#define PTE_P 0x001 // Present<br>
+#define PTE_W 0x002 // Writeable<br>
+#define PTE_U 0x004 // User<br>
+#define PTE_PWT 0x008 // Write−Through<br>
+#define PTE_PCD 0x010 // Cache−Disable<br>
+#define PTE_A 0x020 // Accessed<br>
+#define PTE_D 0x040 // Dirty<br>
+#define PTE_PS 0x080 // Page Size<br>
+#define PTE_MBZ 0x180 // Bits must be zero</p><p>// Address in page table or page directory entry<br>
+#define PTE_ADDR(pte) ((uint)(pte) &amp; ~0xFFF)<br>
+#define PTE_FLAGS(pte) ((uint)(pte) &amp; 0xFFF)</p><p>#ifndef <strong>ASSEMBLER</strong><br>
+typedef uint pte_t;</p><p>// Task state segment format<br>
+struct taskstate {<br>
+uint link; // Old ts selector<br>
+uint esp0; // Stack pointers and segment selectors<br>
+ushort ss0; // after an increase in privilege level<br>
+ushort padding1;<br>
+uint *esp1;<br>
+ushort ss1;<br>
+ushort padding2;<br>
+uint *esp2;<br>
+ushort ss2;<br>
+ushort padding3;<br>
+void *cr3; // Page directory base<br>
+uint *eip; // Saved state from last task switch<br>
+uint eflags;<br>
+uint eax; // More saved state (registers)<br>
+uint ecx;<br>
+uint edx;<br>
+uint ebx;<br>
+uint *esp;<br>
+uint *ebp;<br>
+uint esi;<br>
+uint edi;<br>
+ushort es; // Even more saved state (segment selectors)<br>
+ushort padding4;<br>
+ushort cs;<br>
+ushort padding5;<br>
+ushort ss;<br>
+ushort padding6;<br>
+ushort ds;<br>
+ushort padding7;<br>
+ushort fs;<br>
+ushort padding8;<br>
+ushort gs;<br>
+ushort padding9;<br>
+ushort ldt;<br>
+ushort padding10;<br>
+ushort t; // Trap on task switch<br>
+ushort iomb; // I/O map base address<br>
+};<br>
+…<br>
+// Gate descriptors for interrupts and traps<br>
+struct gatedesc {<br>
+uint off_15_0 : 16; // low 16 bits of offset in segment<br>
+uint cs : 16; // code segment selector<br>
+uint args : 5; // # args, 0 for interrupt/trap gates<br>
+uint rsv1 : 3; // reserved(should be zero I guess)<br>
+uint type : 4; // type(STS_{TG,IG32,TG32})<br>
+uint s : 1; // must be 0 (system)<br>
+uint dpl : 2; // descriptor(meaning new) privilege level<br>
+uint p : 1; // Present<br>
+uint off_31_16 : 16; // high bits of offset in segment<br>
+};</p><p>// Set up a normal interrupt/trap gate descriptor.<br>
+// − istrap: 1 for a trap (= exception) gate, 0 for an interrupt gate.<br>
+// interrupt gate clears FL_IF, trap gate leaves FL_IF alone<br>
+// − sel: Code segment selector for interrupt/trap handler<br>
+// − off: Offset in code segment for interrupt/trap handler<br>
+// − dpl: Descriptor Privilege Level −<br>
+// the privilege level required for software to invoke<br>
+// this interrupt/trap gate explicitly using an int instruction.<br>
+#define SETGATE(gate, istrap, sel, off, d) <br>
+{ <br>
+(gate).off_15_0 = (uint)(off) &amp; 0xffff; <br>
+(gate).cs = (sel); <br>
+(gate).args = 0; <br>
+(gate).rsv1 = 0; <br>
+(gate).type = (istrap) ? STS_TG32 : STS_IG32; <br>
+(gate).s = 0; <br>
+(gate).dpl = (d); <br>
+(gate).p = 1; <br>
+(gate).off_31_16 = (uint)(off) &gt;&gt; 16; <br>
+}</p><p>#endif</p><p>實體的記憶體指向儲存在DRAM。一個byte的實體記憶體有一個地址稱為實體地址。指令只有使用虛擬地址是paging硬體翻譯到實體地址，送到DRAM硬體去讀和寫儲存。</p><p>Process address space<br>
+Page table創造藉由entry已經足夠配對去允許kernel的C程式碼去開始執行。然而main立刻改變去一個新的page table藉由呼叫<br>
+kvmalloc(1840):<br>
+//創造和切換一個Page table用配對在KERNBASE上需要給kernel去執行<br>
+kvmalloc(void)	<br>
+{<br>
+kpgdir = setupkvm();<br>
+switchkvm();<br>
+}<br>
+因為kernel已經有一個更多闡述計畫去描述process地址空間。<br>
+每一個process有一個分散page table，和xv6告訴page table硬體去切換page tables當xv6切換在process間。<br>
+Memlayout.h(0200):<br>
+// Memory layout</p><p>#define EXTMEM 0x100000 // Start of extended memory<br>
+#define PHYSTOP 0xE000000 // Top physical memory<br>
+#define DEVSPACE 0xFE000000 // Other devices are at high addresses</p><p>// Key addresses for address space layout (see kmap in vm.c for layout)<br>
+#define KERNBASE 0x80000000 // First kernel virtual address<br>
+#define KERNLINK (KERNBASE+EXTMEM) // Address where kernel is linked</p><p>#define V2P(a) (((uint) (a)) − KERNBASE)<br>
+#define P2V(a) (((void *) (a)) + KERNBASE)</p><p>#define V2P_WO(x) ((x) − KERNBASE) // same as V2P, but without casts<br>
+#define P2V_WO(x) ((x) + KERNBASE) // same as P2V, but without casts</p><p>當一個process問xv6更多記憶體，xv6第一個找空的實體page去提供，和增加PTEs到process的page table，指到新的記憶體page。Xv6設定PTE_U,PTE_W和PTE_P旗標在PTEs。更多process不能使用全部的使用者地址空間。Xv6留PTE_P清除在沒使用的PTEs。不同的process的page table翻譯使用者地址到不同的實體記憶體的page，所以每一個process都有各自使用者記憶體。<br>
+Xv6包含所有配對需要給kernel去執行在每個process的page table；那些配對所有出現在KERNBASE。它配對虛擬地址KERN-BASE:KERNBASE+PHYSTOP to 0:PHYSTOP。一個理由是這個配對是kernel可以使用它自己的指令和資料。另一個理由是kernel有時候需要去寫一個實體記憶體的page，例如當創造page table pages；有每個實體Page出現在可預測的虛擬地址。一個安排的缺陷是sv6不能使用多餘2GB的實體記憶體。更多設備使用記憶體配對I/O出現在實體地址開始在0xFE00000，所以xv6 page table包含一個直接配對給他們。Xv6不能設定PTE_U旗標在KERN_BASE上的PTEs，所以只有kernel可以使用它們。</p><p>Code: creating an address space<br>
+Main呼叫kvmalloc(1840)去創造和切換一個Page table用配對在KERNBASE上需要給kernel去執行。大多數工作發生在setupkvm(1818):<br>
+setupkvm(void)<br>
+{<br>
+pde_t <em>pgdir;<br>
+struct kmap <em>k;<br>
+//配置一個page的記憶體來保存page directory<br>
+if((pgdir = (pde_t</em>)kalloc()) == 0)		<br>
+return 0;<br>
+memset(pgdir, 0, PGSIZE);<br>
+if (P2V(PHYSTOP) &gt; (void</em>)DEVSPACE)<br>
+panic(“PHYSTOP too high”);<br>
+for(k = kmap; k &lt; &amp;kmap[NELEM(kmap)]; k++)<br>
+//呼叫mappages去安裝kernel需要的翻譯<br>
+if(mappages(pgdir, k−&gt;virt, k−&gt;phys_end − k−&gt;phys_start,<br>
+(uint)k−&gt;phys_start, k−&gt;perm) &lt; 0) {<br>
+freevm(pgdir);<br>
+return 0;<br>
+}<br>
+return pgdir;<br>
+}</p><p>在kmap(1809):<br>
+kmap[] = {<br>
+{ (void*)KERNBASE, 0, EXTMEM, PTE_W}, // I/O space<br>
+{ (void*)KERNLINK, V2P(KERNLINK), V2P(data), 0}, // kern text+rodata<br>
+{ (void*)data, V2P(data), PHYSTOP, PTE_W}, // kern data+memory<br>
+{ (void*)DEVSPACE, DEVSPACE, 0, PTE_W}, // more devices<br>
+};<br>
+這個包含kernel的指令和資料，實體記憶體到PHYSTOP和實際上是I/O設備的記憶體範圍。Setupkvm不能安裝所有配對給使用者記憶體。<br>
+Mappages(1760):<br>
+mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm)<br>
+{<br>
+char *a, *last;<br>
+pte_t *pte;</p><pre><code>a = (char*)PGROUNDDOWN((uint)va);
+last = (char*)PGROUNDDOWN(((uint)va) + size − 1);
+for(;;){
+	if((pte = walkpgdir(pgdir, a, 1)) == 0)
+		return −1;
+	if(*pte &amp; PTE_P)
+		panic("remap");
+	*pte = pa | perm | PTE_P;
+	if(a == last)
+		break;
+	a += PGSIZE;
+	pa += PGSIZE;
+}
+return 0;
+</code></pre><p>}<br>
+安裝配對在page table給一個虛擬地址的範圍去對應實體地址的範圍。每一個虛擬地址被配對mappages呼叫walkpgdir去尋找該地址的PTE的地址。它初始化PTE去保存相應實體page number，所需的權限，和PTE_P去標記PTE是valid(1772)。<br>
+Walkpgdir(1735):<br>
+walkpgdir(pde_t *pgdir, const void *va, int alloc)<br>
+{<br>
+pde_t *pde;<br>
+pte_t *pgtab;<br>
+//使用虛擬地址的上面10bit去尋找page directory entry<br>
+pde = &amp;pgdir[PDX(va)];<br>
+if(<em>pde &amp; PTE_P){<br>
+pgtab = (pte_t</em>)P2V(PTE_ADDR(<em>pde));<br>
+} else {<br>
+//如果page directory不存在<br>
+//則需要的page table page還沒被分配<br>
+if(!alloc || (pgtab = (pte_t</em>)kalloc()) == 0)<br>
+return 0;<br>
+// 確保所有PTE_P bits都是0<br>
+memset(pgtab, 0, PGSIZE);<br>
+// 這裡的權限過分慷慨, 但它們可以<br>
+// 進一步限制藉由權限進入page table<br>
+//, 必要時<br>
+*pde = V2P(pgtab) | PTE_P | PTE_W | PTE_U;<br>
+}<br>
+//使用虛擬地址的下10個bit去尋找在page table page PTE的地址<br>
+return &amp;pgtab[PTX(va)];<br>
+}<br>
+模仿x86 paging硬體的動作像它查詢PTE一個虛擬地址。如果alloc 設定，walkpgdir分配它和放它的實體地址在page directory。</p><p>Physical memory allocation<br>
+Kernel必須分配和釋放實體記憶體在執行時給page table、process使用者記憶體、kernel堆疊和Pipe buffers。<br>
+Xv6使用在kernel和PHYSTOP之間的實體記憶體在執行時分配。它分配和釋放全部4096 bytes page在同一時間。它保持透過線程連接列表追蹤那些page。分配包含從一個連接列表移除一個Page；釋放包含增加空的page到列表。</p><p>Code: Physical memory allocator<br>
+分配的資料結構是實體記憶體Pages的釋放列表，是可以被分配。每一個空page的列表元素是struct run(3115):<br>
+struct run {<br>
+struct run *next;<br>
+};</p><p>struct {						//spin lock<br>
+struct spinlock lock;<br>
+int use_lock;<br>
+struct run *freelist;<br>
+} kmem;<br>
+它儲存每個釋放page的run結構在釋放page本身，自從沒有其他儲存在那。空烈表示被一個spin lock保護。這列表和這個lock被包在一個struct去弄清楚這個lock保護在struct的領域。<br>
+Main呼叫kinit1和kinit2去初始化分配(3131):<br>
+kinit1(void *vstart, void *vend)<br>
+{<br>
+initlock(&amp;kmem.lock, “kmem”);<br>
+kmem.use_lock = 0;<br>
+freerange(vstart, vend);<br>
+}</p><p>void<br>
+kinit2(void *vstart, void *vend)<br>
+{<br>
+freerange(vstart, vend);<br>
+kmem.use_lock = 1;<br>
+}<br>
+對於很多main一個不能使用locks或記憶體在4MB以上。Kinit1設定給lock-less分配在前4GB，kinit2使鎖住和安排更多記憶體去配分配。Main應該去確定多少實體記憶體是可用的，但這在x86上很困難。kinity1和kinit2呼叫freerange去增加記憶體到空列表藉由每個page呼叫kfree。一個PTE可以只有指向一個實體記憶體，所以freerange使用PGROUNDUP去卻表它釋放只有實體地址。分配開始沒有記憶體；這些呼叫去kfree給它一些去管理。<br>
+分配到實體page藉由它們的虛擬地址，不是藉由它們的實體地址，這是為什麼kinit使用P2V(PHYSTOP)去翻譯PHYSTOP(一個實體地址)到一個虛擬地址。分配有時候會用整數代表地址為了方便運算，有時候使用pointer去讀和寫記憶體；地址的雙重使用的主要原因是分配程式碼都是C type。另一個原因是釋放和分配本質改變記憶體的型態。<br>
+Kfree(3164):<br>
+kfree(char *v)<br>
+{<br>
+struct run *r;</p><pre><code>if((uint)v % PGSIZE || v &lt; end || V2P(v) &gt;= PHYSTOP)
+	panic("kfree");
+
+// Fill with junk to catch dangling refs.
+memset(v, 1, PGSIZE);
+
+if(kmem.use_lock)
+	acquire(&amp;kmem.lock);
+r = (struct run*)v;
+r−&gt;next = kmem.freelist;
+kmem.freelist = r;
+if(kmem.use_lock)
+	release(&amp;kmem.lock);
+</code></pre><p>}<br>
+開始就由設定在記憶體的每個byte開始釋放到值1。這會造成程式碼使用記憶體在釋放它之後去讀垃圾取代舊的值；希望這會更快。Kfree的v是pointer到struct run，紀錄就的開始釋放列表在r-&gt;next，設定釋放列表等於r。kalloc移除和回傳在釋放列表的第一個元素。</p><p>User part of an address space<br>
+每個使用者process開始在地址0。地址空間的底部包含使用者程式碼、資料和堆疊。Heap在堆疊之上所以heap可以擴展當它呼叫sbrk。當xv6擴展一個process的heap，它可以使用任何free的實體page給新的虛擬page然後讓page table硬體去配對虛擬page到分配的實體page。<br>
+堆疊是單一的page，表示和被exec創造的初始內容一樣。Strings包含命令參數，就像一個pointer的陣列到它們，是在堆疊的頂端。一個程式從main開始就向function呼叫main(argc,argv)開始。</p><p>Code: sbrk<br>
+Sbrk是system call給一個process去收縮或成長它的記憶體。藉由growproc(2558)來實施；<br>
+growproc(int n)<br>
+{<br>
+uint sz;<br>
+struct proc *curproc = myproc();</p><pre><code>sz = curproc−&gt;sz;
+//如果n是正的
+if(n &gt; 0){
+	// growproc分配一個以上的實體page
+</code></pre><p>//和對應它們在process的地址空間頂端<br>
+if((sz = allocuvm(curproc−&gt;pgdir, sz, sz + n)) == 0)<br>
+return −1;<br>
+//如果n是負的<br>
+} else if(n &lt; 0){<br>
+// gorwproc不會對應一個以上page<br>
+//從process的地址空間和釋放相應的實體page<br>
+if((sz = deallocuvm(curproc−&gt;pgdir, sz, sz + n)) == 0)<br>
+return −1;<br>
+}<br>
+curproc−&gt;sz = sz;<br>
+switchuvm(curproc);<br>
+return 0;<br>
+}<br>
+Xv6修正process的page table。Process的page table被儲存在記憶體，所以kernel可以用普通分配指令升級table，allocuvm和deallocuvm去做。X86硬體caches page table進入在Translation Look-aside Buffer(TLB)，當xv6改變page table，它必須廢止cache進入。如果它沒有廢止cache進入，在某些時候TLB可能會使用到舊的配對，指向實體page時已經被分配到其他的process，結果會造成一個process可能去用到其他process的記憶體。Xv6廢止舊的cache進入，就由重新讀入cr3暫存器保存了目前page table的地址。</p><p>Code: exec<br>
+Exec是system call創造一個地址空間的使用者部分。它初始化地址空間的使用者部分從一個檔案儲存到檔案系統。<br>
+Exec(6610):<br>
+exec(char *path, char **argv)<br>
+{<br>
+char *s, *last;<br>
+int i, off;<br>
+uint argc, sz, sp, ustack[3+MAXARG+1];<br>
+struct elfhdr elf;<br>
+struct inode *ip;<br>
+struct proghdr ph;<br>
+pde_t *pgdir, *oldpgdir;<br>
+struct proc *curproc = myproc();</p><pre><code>begin_op();
+
+if((ip = namei(path)) == 0){		//開啟命名的二進位path
+	end_op();
+	cprintf("exec: fail\n");
+	return −1;
+}
+ilock(ip);
+pgdir = 0;
+
+// 檢查ELF標頭檔
+//若有錯誤，跳到bad
+if(readi(ip, (char*)&amp;elf, 0, sizeof(elf)) != sizeof(elf))
+	goto bad;
+if(elf.magic != ELF_MAGIC)
+	goto bad;
+//分配沒有被配對到新的page table
+if((pgdir = setupkvm()) == 0)	
+	goto bad;
+
+// 從記憶體讀程式
+sz = 0;
+for(i=0, off=elf.phoff; i&lt;elf.phnum; i++, off+=sizeof(ph)){
+	if(readi(ip, (char*)&amp;ph, off, sizeof(ph)) != sizeof(ph))
+		goto bad;
+	if(ph.type != ELF_PROG_LOAD)
+		continue;
+	if(ph.memsz &lt; ph.filesz)
+		goto bad;
+	if(ph.vaddr + ph.memsz &lt; ph.vaddr)
+		goto bad;
+		//分配記憶體給每個ELF區段
+</code></pre><p>//檢查虛擬地址要求在KERNBASE之下<br>
+if((sz = allocuvm(pgdir, sz, ph.vaddr + ph.memsz)) == 0)<br>
+goto bad;<br>
+if(ph.vaddr % PGSIZE != 0)<br>
+goto bad;<br>
+if(loaduvm(pgdir, (char*)ph.vaddr, ip, ph.off, ph.filesz) &lt; 0)<br>
+goto bad;<br>
+}<br>
+iunlockput(ip);<br>
+end_op();<br>
+ip = 0;</p><pre><code>// 分配兩個page在下一個page的範圍
+// Make the first inaccessible. 
+</code></pre><p>//Use the second as the user stack.<br>
+sz = PGROUNDUP(sz);<br>
+//讀每個區段進入記憶體<br>
+if((sz = allocuvm(pgdir, sz, sz + 2<em>PGSIZE)) == 0)<br>
+goto bad;<br>
+clearpteu(pgdir, (char</em>)(sz − 2*PGSIZE));<br>
+sp = sz;</p><pre><code>// Push argument strings, prepare rest of stack in ustack.
+for(argc = 0; argv[argc]; argc++) {
+	if(argc &gt;= MAXARG)
+		goto bad;
+	sp = (sp − (strlen(argv[argc]) + 1)) &amp; ~3;
+	if(copyout(pgdir, sp, argv[argc], strlen(argv[argc]) + 1) &lt; 0)
+		goto bad;
+	ustack[3+argc] = sp;
+}
+ustack[3+argc] = 0;
+
+ustack[0] = 0xffffffff; // fake return PC
+ustack[1] = argc;
+ustack[2] = sp − (argc+1)*4; // argv pointer
+
+sp −= (3+argc+1) * 4;
+if(copyout(pgdir, sp, ustack, (3+argc+1)*4) &lt; 0)
+	goto bad;
+
+// 為了debug儲存程式名
+for(last=s=path; *s; s++)
+	if(*s == ’/’)
+		last = s+1;
+safestrcpy(curproc−&gt;name, last, sizeof(curproc−&gt;name));
+
+// Commit to the user image.
+oldpgdir = curproc−&gt;pgdir;
+curproc−&gt;pgdir = pgdir;
+curproc−&gt;sz = sz;
+curproc−&gt;tf−&gt;eip = elf.entry; 	// main
+curproc−&gt;tf−&gt;esp = sp;
+switchuvm(curproc);			//exec安裝新的
+freevm(oldpgdir);				//釋放舊的
+return 0;						//回傳0
+
+bad:
+	if(pgdir)
+		freevm(pgdir);
+	if(ip){
+		iunlockput(ip);
+		end_op();
+	}
+	return −1;
+</code></pre><p>}<br>
+它讀ELF header。Xv6硬硬被描述廣泛使用的ELF format，定義在elf.h。一個ELF二進位包含一個ELF header、struct eldhdr(0955):<br>
+struct elfhdr {<br>
+uint magic; // must equal ELF_MAGIC<br>
+uchar elf[12];<br>
+ushort type;<br>
+ushort machine;<br>
+uint version;<br>
+uint entry;<br>
+uint phoff;<br>
+uint shoff;<br>
+uint flags;<br>
+ushort ehsize;<br>
+ushort phentsize;<br>
+ushort phnum;<br>
+ushort shentsize;<br>
+ushort shnum;<br>
+ushort shstrndx;<br>
+};</p><p>Struct proghdr(0974):<br>
+struct proghdr {<br>
+uint type;<br>
+uint off;<br>
+uint vaddr;<br>
+uint paddr;<br>
+uint filesz;<br>
+uint memsz;<br>
+uint flags;<br>
+uint align;<br>
+};<br>
+每個proghdr描述一段應用必須被讀進記憶體；xv6程式碼只有一個程式區段標頭檔，但是其他系統可能分配區段給指令和資料。<br>
+第一步是快速檢查檔案可能包含ELF二進位。一個ELF二進位開始在4bytes魔術數字 ‘0x7F’ , ’E’ , ‘L’ , ’F’ , ’ELF_MAGIC’(0952):<br>
+0952 #define ELF_MAGIC 0x464C457FU // “\x7FELF” in little endian<br>
+如果ELF標頭檔已經有魔術數字，exec假設二進位是正確格式。<br>
+Loaduvm(1903):<br>
+loaduvm(pde_t *pgdir, char *addr, struct inode *ip, uint offset, uint sz)<br>
+{<br>
+uint i, pa, n;<br>
+pte_t *pte;</p><pre><code>if((uint) addr % PGSIZE != 0)
+	panic("loaduvm: addr must be page aligned");
+for(i = 0; i &lt; sz; i += PGSIZE){
+	//去尋找被分配的記憶體的實體地址，寫ELF片段的每個Page
+	if((pte = walkpgdir(pgdir, a ddr+i, 0)) == 0)
+		panic("loaduvm: address should exist");
+	pa = PTE_ADDR(*pte);
+	if(sz − i &lt; PGSIZE)
+		n = sz − i;
+	else
+		n = PGSIZE;
+	//readi從檔案去讀
+	if(readi(ip, P2V(pa), offset+i, n) != n)
+		return −1;
+}
+return 0;
+</code></pre><p>}</p><p>Exec分配和初始化使用者堆疊。它分配只有一個堆疊page。Exec一次複製一字串參數到堆疊的頂端，在ustack紀錄指標。它放一個空指標在argv列表傳向main的尾端。前三個進入ustack是假的回傳PC,argc,argv指標。<br>
+Exec放置一個遙遠的page在堆疊page底下，讓程式程式去使用一個以上的page會失敗。這個遙遠的page也允許exec去處理太大的參數；copyout(2118):<br>
+copyout(pde_t *pgdir, uint va, void *p, uint len)<br>
+{<br>
+char *buf, *pa0;<br>
+uint n, va0;</p><pre><code>buf = (char*)p;
+while(len &gt; 0){
+	va0 = (uint)PGROUNDDOWN(va);
+	pa0 = uva2ka(pgdir, (char*)va0);
+	if(pa0 == 0)
+		return −1;
+	n = PGSIZE − (va − va0);
+	if(n &gt; len)
+		n = len;
+	memmove(pa0 + (va − va0), buf, n);
+	len −= n;
+	buf += n;
+	va = va0 + PGSIZE;
+}
+return 0;
+</code></pre><p>}<br>
+Exec使用它去複製參數到堆疊會注意目的地page不可訪問，和回傳-1。<br>
+在準備新的記憶體期間，如果exec檢查到一個錯誤像無效程式碼片段，它跳到bad，釋放新的，回傳-1。Exec會等待釋放舊的直到它確定system call會成功：如果舊的離開了，system call不能回傳-1。唯一的錯誤在exec發生在創造的期間。</p><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        <div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
