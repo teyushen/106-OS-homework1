@@ -1,5 +1,7 @@
 # Chapter 4
 
+Name: Dennis (沈德祐)
+
 ## 前提
 
 Xv6 是運行在多個 processors 的 OS，也就是運行在多個獨立的 CPUs 的 OS。這些 CPUs 會共享實體的 RAM，這些 CPUs 會對共享的 RAM 做 `讀取` 及 `寫入` 的動作。由於同一時間有可能有多個 CPU 同時對 Memory 中相同的資料做 `讀` `寫`，導致資料問題。
