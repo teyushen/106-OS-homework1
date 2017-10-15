@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><p>OS HW1<br>
+    <div id="doc" class="markdown-body container-fluid"><p>OS HW1<br>
 B10401020 四資工三乙 林祐邦</p><h1 id="ch4-lock"><a class="anchor hidden-xs" href="#ch4-lock" title="ch4-lock"><span class="octicon octicon-link"></span></a>CH4 Lock</h1><h2 id="簡介"><a class="anchor hidden-xs" href="#簡介" title="簡介"><span class="octicon octicon-link"></span></a>簡介</h2><blockquote>
 <p>本章是在說明關於CPU Lock的相關處理，XV6運行在多核心的處理器上時，是讓不同CPU共用RAM，各個cpu可以各自read或write，因此有可能會一時間不同cpu讀寫同一位址的情形發生；或者運行在單處理器時意外中斷，而恰巧當下程序與下一程序讀寫同一位址的情形，也就是Race conditions。</p>
 <p>為了避免發生此類情形發生，XV6使用了Lock的機制來建立合作機制，保證當下只有一個CPU可以持有Lock，沒持有該Lock的CPU不得使用該區塊，並只有持有特定Lock才能讀寫某一區塊的data。</p>
@@ -234,19 +234,19 @@ release(struct spinlock *lk)
 }
 </div></div></code></pre><p>release function是用來將鎖解除，第1605行是確認是否為此cpu鎖上的，如果不是的話一樣跳出錯誤警告。<br>
 第1608~1609行則是把鎖上的cpu及pcs清除。<br>
-最後使用popcli表示可中斷。</p><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
+最後使用popcli表示可中斷。</p></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
                 <i class="fa fa-bars"></i>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
-                <div class="toc"><ul class="nav"><li class=""><a href="#ch4-lock">CH4 Lock</a><ul class="nav"><li class=""><a href="#簡介">簡介</a></li><li class=""><a href="#程式流程">程式流程</a></li><li class=""><a href="#資料結構">資料結構</a></li><li class=""><a href="#原始碼解釋">原始碼解釋</a><ul class="nav"><li class=""><a href="#一、-acquire">一、 acquire</a></li><li><a href="#二、-release">二、 release</a></li></ul></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+                <div class="toc"><ul class="nav"><li class=""><a href="#ch4-lock">CH4 Lock</a><ul class="nav"><li><a href="#簡介">簡介</a></li><li><a href="#程式流程">程式流程</a></li><li><a href="#資料結構">資料結構</a></li><li><a href="#原始碼解釋">原始碼解釋</a><ul class="nav"><li><a href="#一、-acquire">一、 acquire</a></li><li><a href="#二、-release">二、 release</a></li></ul></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
             </ul>
         </div>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
-        <div class="toc"><ul class="nav"><li class=""><a href="#ch4-lock">CH4 Lock</a><ul class="nav"><li class=""><a href="#簡介">簡介</a></li><li class=""><a href="#程式流程">程式流程</a></li><li class=""><a href="#資料結構">資料結構</a></li><li class=""><a href="#原始碼解釋">原始碼解釋</a><ul class="nav"><li class=""><a href="#一、-acquire">一、 acquire</a></li><li><a href="#二、-release">二、 release</a></li></ul></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+        <div class="toc"><ul class="nav"><li class=""><a href="#ch4-lock">CH4 Lock</a><ul class="nav"><li><a href="#簡介">簡介</a></li><li><a href="#程式流程">程式流程</a></li><li><a href="#資料結構">資料結構</a></li><li><a href="#原始碼解釋">原始碼解釋</a><ul class="nav"><li><a href="#一、-acquire">一、 acquire</a></li><li><a href="#二、-release">二、 release</a></li></ul></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
