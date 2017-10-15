@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="mobile-web-app-capable" content="yes">
     <title>
-        Chapter 2. Page tables - HackMD
+        作業系統 CH4 Locking - HackMD
     </title>
     <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
     <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
@@ -35,447 +35,174 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><h1 id="chapter-2-page-tables"><a class="anchor hidden-xs" href="#chapter-2-page-tables" title="chapter-2-page-tables"><span class="octicon octicon-link"></span></a>Chapter 2. Page tables</h1><p><a href="https://" target="_blank"></a>　　xv6使用了Page tables mechanism讓不同process各自的address space可以對應到相同的physical memory，且能保護不同process各自的memory不互相影響。</p><h1 id="1-原理"><a class="anchor hidden-xs" href="#1-原理" title="1-原理"><span class="octicon octicon-link"></span></a>1. 原理</h1><p><img src="https://i.imgur.com/Nj0W0rr.jpg" alt=""><br>
-根據Figure 2-1表示，地址的轉換都會經由兩個步驟。<br>
-　　有一個4096 bytes的page directory，裡面存有1024個page table pages的reference，而每個page table pages中又有1024個32 bits的page table entry(PTE)。<br>
-　　首先paging hardware會先使用virtual address的top 10 bits去找到page directory entry。<br>
-　　如果存在的話，paging hardware就會使用接下來的10 bits去找到PTE，如果page directory entry或PTE不存在的話，那paging hardware就會raise a fault。<br>
-　　每個PTE都會包含flag bits，如PTE_P代表PTE存在，PTE_W代表是否允許寫入這個page和PTE_U控制user program是否能使用這個page等等。</p><h1 id="2-程式流程"><a class="anchor hidden-xs" href="#2-程式流程" title="2-程式流程"><span class="octicon octicon-link"></span></a>2. 程式流程</h1><p><img src="https://i.imgur.com/8IxNCi4.png" alt=""></p><h1 id="3-程式碼說明"><a class="anchor hidden-xs" href="#3-程式碼說明" title="3-程式碼說明"><span class="octicon octicon-link"></span></a>3. 程式碼說明</h1><p><strong>kvmalloc</strong></p><pre><code>1839 void
-1840 kvmalloc(void)
-1841 {
-1842   kpgdir = setupkvm();
-1843   switchkvm();
-1844 }
-</code></pre><ol>
-<li>呼叫setupkvm和switchkvm來建立一個page table，並切換page table</li>
-</ol><p><strong>setupkvm</strong></p><pre><code>1817 pde_t*
-1818 setupkvm(void)
-1819 {
-1820   pde_t *pgdir;
-1821   struct kmap *k;
-1822 
-1823   if((pgdir = (pde_t*)kalloc()) == 0)
-1824     return 0;
-1825   memset(pgdir, 0, PGSIZE);
-1826   if (P2V(PHYSTOP) &gt; (void*)DEVSPACE)
-1827     panic("PHYSTOP too high");
-1828   for(k = kmap; k &lt; &amp;kmap[NELEM(kmap)]; k++)
-1829     if(mappages(pgdir, k−&gt;virt, k−&gt;phys_end − k−&gt;phys_start,
-1830                 (uint)k−&gt;phys_start, k−&gt;perm) &lt; 0) {
-1831       freevm(pgdir);
-1832       return 0;
-1833     }
-1834   return pgdir;
-1835 }
-</code></pre><p>功能為建立一個page table</p><ol>
-<li>呼叫kalloc分配一個virtual addresses space</li>
-<li>呼叫mappages依照kmap建立 virtual addresse和physical addresses的translations<br>
-如果發生錯誤的話，則呼叫freevm歸還已經被allocate的page table，之後return</li>
-</ol><p><strong>mappages</strong></p><pre><code>1759 static int
-1760 mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm)
-1761 {
-1762   char *a, *last;
-1763   pte_t *pte;
-1764 
-1765   a = (char*)PGROUNDDOWN((uint)va);
-1766   last = (char*)PGROUNDDOWN(((uint)va) + size − 1);
-1767   for(;;){
-1768     if((pte = walkpgdir(pgdir, a, 1)) == 0)
-1769       return −1;
-1770     if(*pte &amp; PTE_P)
-1771       panic("remap");
-1772     *pte = pa | perm | PTE_P;
-1773     if(a == last)
-1774       break;
-1775     a += PGSIZE;
-1776     pa += PGSIZE;
-1777   }
-1778   return 0;
-1779 }
-</code></pre><p>功能為建立virtual addresse和physical addresses的translations</p><ol>
-<li>對每個已經被mapped的virtual address,呼叫walkpgdir來找到PTE的address.</li>
-<li>初始化PTE的relevant physical page number，PTE_W、PTE_U和PTE_P，並標示PTE_P是有效的</li>
-</ol><p><strong>walkpgdir</strong></p><pre><code>1734 static pte_t *
-1735 walkpgdir(pde_t *pgdir, const void *va, int alloc)
-1736 {
-1737   pde_t *pde;
-1738   pte_t *pgtab;
-1739 
-1740   pde = &amp;pgdir[PDX(va)];
-1741   if(*pde &amp; PTE_P){
-1742     pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
-1743   } else {
-1744     if(!alloc || (pgtab = (pte_t*)kalloc()) == 0)
-1745       return 0;
-1746     // Make sure all those PTE_P bits are zero.
-1747     memset(pgtab, 0, PGSIZE);
-1748     // The permissions here are overly generous, but they can
-1749     // be further restricted by the permissions in the page table
-1750     // entries, if necessary.
-1751     *pde = V2P(pgtab) | PTE_P | PTE_W | PTE_U;
-1752   }
-1753   return &amp;pgtab[PTX(va)];
-1754 }
-</code></pre><p>功能為找到在page table中PTE的address</p><ol>
-<li>根據virtual address的top 10 bits找到page directory entry</li>
-<li>如果不存在，就新建一個page table page並設定屬性</li>
-<li>如果存在就根據下10 bits找到PTE的address並回傳</li>
-</ol><p><strong>kalloc</strong></p><pre><code>3186 char*
-3187 kalloc(void)
-3188 {
-3189   struct run *r;
-3190 
-3191   if(kmem.use_lock)
-3192     acquire(&amp;kmem.lock);
-3193   r = kmem.freelist;
-3194   if(r)
-3195     kmem.freelist = r−&gt;next;
-3196   if(kmem.use_lock)
-3197     release(&amp;kmem.lock);
-3198   return (char*)r;
-3199 }
-</code></pre><p>功能為分配一個virtual addresses space</p><ol>
-<li>變數r指向free list的頭</li>
-<li>free list = r.next</li>
-<li>return r</li>
-</ol><p><strong>kinit1和kinit2</strong></p><pre><code>3130 void
-3131 kinit1(void *vstart, void *vend)
-3132 {
-3133   initlock(&amp;kmem.lock, "kmem");
-3134   kmem.use_lock = 0;
-3135   freerange(vstart, vend);
-3136 }
-3137 
-3138 void
-3139 kinit2(void *vstart, void *vend)
-3140 {
-3141   freerange(vstart, vend);
-3142   kmem.use_lock = 1;
-3143 }
-</code></pre><p>kinit1和kinit2都是在初始化memory，差別只在kinit1是lock-less allocation，用來設定前4 MB，而kinit2 enables locking來安排更多allocatable的memory。</p><ol>
-<li>呼叫freerange來初始化physical memory</li>
-</ol><p><strong>freerange</strong></p><pre><code>3150 void
-3151 freerange(void *vstart, void *vend)
-3152 {
-3153   char *p;
-3154   p = (char*)PGROUNDUP((uint)vstart);
-3155   for(; p + PGSIZE &lt;= (char*)vend; p += PGSIZE)
-3156     kfree(p);
-3157 }
-</code></pre><p>功能為初始化physical memory</p><ol>
-<li>呼叫PGROUNDUP來確保他只free掉對齊的physical addresses</li>
-<li>呼叫kfree來釋放memory</li>
-</ol><p><strong>kfree</strong></p><pre><code>3163 void
-3164 kfree(char *v)
-3165 {
-3166   struct run *r;
-3167 
-3168   if((uint)v % PGSIZE || v &lt; end || V2P(v) &gt;= PHYSTOP)
-3169     panic("kfree");
-3170 
-3171   // Fill with junk to catch dangling refs.
-3172   memset(v, 1, PGSIZE);
-3173 
-3174   if(kmem.use_lock)
-3175     acquire(&amp;kmem.lock);
-3176   r = (struct run*)v;
-3177   r−&gt;next = kmem.freelist;
-3178   kmem.freelist = r;
-3179   if(kmem.use_lock)
-3180     release(&amp;kmem.lock);
-3181 }
-</code></pre><p>功能為釋放memory</p><ol>
-<li>呼叫memset來把memory初始化為1</li>
-<li>將這塊memory加到free list的頭</li>
-<li>回傳free list的頭</li>
-</ol><p><strong>growproc</strong></p><pre><code>2557 int
-2558 growproc(int n)
-2559 {
-2560   uint sz;
-2561   struct proc *curproc = myproc();
-2562 
-2563   sz = curproc−&gt;sz;
-2564   if(n &gt; 0){
-2565     if((sz = allocuvm(curproc−&gt;pgdir, sz, sz + n)) == 0)
-2566       return −1;
-2567   } else if(n &lt; 0){
-2568     if((sz = deallocuvm(curproc−&gt;pgdir, sz, sz + n)) == 0)
-2569       return −1;
-2570   }
-2571   curproc−&gt;sz = sz;
-2572   switchuvm(curproc);
-2573   return 0;
-2574 }
-</code></pre><p>功能為把memory擴充或縮小n bytes</p><ol>
-<li>如果n&gt;0，則呼叫allocuvm將memory的空間從sz擴充到sz+n</li>
-<li>如果n&lt;0，則呼叫deallocuvm將memory的空間從sz縮小到sz+n</li>
-</ol><p><strong>exec</strong></p><pre><code>6609 int
-6610 exec(char *path, char **argv)
-6611 {
-6612   char *s, *last;
-6613   int i, off;
-6614   uint argc, sz, sp, ustack[3+MAXARG+1];
-6615   struct elfhdr elf;
-6616   struct inode *ip;
-6617   struct proghdr ph;
-6618   pde_t *pgdir, *oldpgdir;
-6619   struct proc *curproc = myproc();
-6620 
-6621   begin_op();
-6622 
-6623   if((ip = namei(path)) == 0){
-6624     end_op();
-6625     cprintf("exec: fail\n");
-6626     return −1;
-6627   }
-6628   ilock(ip);
-6629   pgdir = 0;
-6630 
-6631   // Check ELF header
-6632   if(readi(ip, (char*)&amp;elf, 0, sizeof(elf)) != sizeof(elf))
-6633     goto bad;
-6634   if(elf.magic != ELF_MAGIC)
-6635     goto bad;
-6636 
-6637   if((pgdir = setupkvm()) == 0)
-6638     goto bad;
-6639 
-6640   // Load program into memory.
-6641   sz = 0;
-6642   for(i=0, off=elf.phoff; i&lt;elf.phnum; i++, off+=sizeof(ph)){
-6643     if(readi(ip, (char*)&amp;ph, off, sizeof(ph)) != sizeof(ph))
-6644       goto bad;
-6645     if(ph.type != ELF_PROG_LOAD)
-6646       continue;
-6647     if(ph.memsz &lt; ph.filesz)
-6648       goto bad;
-6649     if(ph.vaddr + ph.memsz &lt; ph.vaddr)
-6650       goto bad;
-6651     if((sz = allocuvm(pgdir, sz, ph.vaddr + ph.memsz)) == 0)
-6652       goto bad;
-6653     if(ph.vaddr % PGSIZE != 0)
-6654       goto bad;
-6655     if(loaduvm(pgdir, (char*)ph.vaddr, ip, ph.off, ph.filesz) &lt; 0)
-6656       goto bad;
-6657   }
-6658   iunlockput(ip);
-6659   end_op();
-6660   ip = 0;
-6661 
-6662   // Allocate two pages at the next page boundary.
-6663   // Make the first inaccessible.  Use the second as the user stack.
-6664   sz = PGROUNDUP(sz);
-6665   if((sz = allocuvm(pgdir, sz, sz + 2*PGSIZE)) == 0)
-6666     goto bad;
-6667   clearpteu(pgdir, (char*)(sz − 2*PGSIZE));
-6668   sp = sz;
-6669 
-6670   // Push argument strings, prepare rest of stack in ustack.
-6671   for(argc = 0; argv[argc]; argc++) {
-6672     if(argc &gt;= MAXARG)
-6673       goto bad;
-6674     sp = (sp − (strlen(argv[argc]) + 1)) &amp; ~3;
-6675     if(copyout(pgdir, sp, argv[argc], strlen(argv[argc]) + 1) &lt; 0)
-6676       goto bad;
-6677     ustack[3+argc] = sp;
-6678   }
-6679   ustack[3+argc] = 0;
-6680 
-6681   ustack[0] = 0xffffffff;  // fake return PC
-6682   ustack[1] = argc;
-6683   ustack[2] = sp − (argc+1)*4;  // argv pointer
-6684 
-6685   sp −= (3+argc+1) * 4;
-6686   if(copyout(pgdir, sp, ustack, (3+argc+1)*4) &lt; 0)
-6687     goto bad;
-6688 
-6689   // Save program name for debugging.
-6690   for(last=s=path; *s; s++)
-6691     if(*s == ’/’)
-6692       last = s+1;
-6693   safestrcpy(curproc−&gt;name, last, sizeof(curproc−&gt;name));
-6694 
-6695   // Commit to the user image.
-6696   oldpgdir = curproc−&gt;pgdir;
-6697   curproc−&gt;pgdir = pgdir;
-6698   curproc−&gt;sz = sz;
-6699   curproc−&gt;tf−&gt;eip = elf.entry;  // main
-6700   curproc−&gt;tf−&gt;esp = sp;
-6701   switchuvm(curproc);
-6702   freevm(oldpgdir);
-6703   return 0;
-6704 
-6705  bad:
-6706   if(pgdir)
-6707     freevm(pgdir);
-6708   if(ip){
-6709     iunlockput(ip);
-6710     end_op();
-6711   }
-6712   return −1;
-6713 }
-</code></pre><ol>
-<li>呼叫namei來開啟named binary path，如果失敗就return -1。</li>
-<li>檢查ELF header的開頭4 byte有沒有符合ELF_MAGIC，如果有exec就假設這個binary是對的。</li>
-<li>呼叫setupkvm來allocate一個page table</li>
-<li>分析elf的各個segment<br>
-i.	呼叫allocuvm來幫每個ELF segment allocate一個新的memory<br>
-ii.	呼叫loaduvm來把每個segment讀進memory裡</li>
-<li>呼叫allocuvm來allocate兩個memory</li>
-<li>呼叫clearpteu清除第一個page的PTE_U</li>
-<li>allocate一個stack page用來存argument strings並使用ustack來記錄這些pointers，放一個null pointer在ustack的最後，後面會做為argv list傳給main</li>
-<li>設定path</li>
-<li>保存舊的page table</li>
-<li>更新process的page table</li>
-<li>更新process的空間大小</li>
-<li>呼叫switchuvm來切換page table</li>
-<li>呼叫freevm來free掉舊的page table</li>
-<li>return 0<br>
-如果過程中有出錯的部分，全都會jump到label bad，這段程式碼會呼叫freevm去free掉新的page table，並return -1</li>
-</ol><p><strong>namei</strong></p><pre><code>5789 struct inode*
-5790 namei(char *path)
-5791 {
-5792   char name[DIRSIZ];
-5793   return namex(path, 0, name);
-5794 }
-</code></pre><p>功能為開啟named binary path</p><p><strong>allocuvm</strong></p><pre><code>1926 int
-1927 allocuvm(pde_t *pgdir, uint oldsz, uint newsz)
-1928 {
-1929   char *mem;
-1930   uint a;
-1931 
-1932   if(newsz &gt;= KERNBASE)
-1933     return 0;
-1934   if(newsz &lt; oldsz)
-1935     return oldsz;
-1936 
-1937   a = PGROUNDUP(oldsz);
-1938   for(; a &lt; newsz; a += PGSIZE){
-1939     mem = kalloc();
-1940     if(mem == 0){
-1941       cprintf("allocuvm out of memory\n");
-1942       deallocuvm(pgdir, newsz, oldsz);
-1943       return 0;
-1944     }
-1945     memset(mem, 0, PGSIZE);
-1946     if(mappages(pgdir, (char*)a, PGSIZE, V2P(mem), PTE_W|PTE_U) &lt; 0){
-1947       cprintf("allocuvm out of memory (2)\n");
-1948       deallocuvm(pgdir, newsz, oldsz);
-1949       kfree(mem);
-1950       return 0;
-1951     }
-1952   }
-1953   return newsz;
-1954 }
-</code></pre><p>功能為將memory的空間從oldsz擴充到newsz</p><ol>
-<li>檢查newsize是不是大於KERNBASE，是就直接return 0</li>
-<li>檢查newsize是不是小於oldsize，是就回傳oldsize</li>
-<li>先呼叫kalloc分配一個page(virtual addresses)</li>
-<li>呼叫memset初始化memory為0，</li>
-<li>呼叫mappages來建立physical addresses和virtual addresses的translations</li>
-<li>回傳newsize<br>
-如果中間有error，則歸還已經拿到的page和physical memory後回傳0</li>
-</ol><p><strong>loaduvm</strong></p><pre><code>1902 int
-1903 loaduvm(pde_t *pgdir, char *addr, struct inode *ip, uint offset, uint sz)
-1904 {
-1905   uint i, pa, n;
-1906   pte_t *pte;
-1907 
-1908   if((uint) addr % PGSIZE != 0)
-1909     panic("loaduvm: addr must be page aligned");
-1910   for(i = 0; i &lt; sz; i += PGSIZE){
-1911     if((pte = walkpgdir(pgdir, addr+i, 0)) == 0)
-1912       panic("loaduvm: address should exist");
-1913     pa = PTE_ADDR(*pte);
-1914     if(sz − i &lt; PGSIZE)
-1915       n = sz − i;
-1916     else
-1917       n = PGSIZE;
-1918     if(readi(ip, P2V(pa), offset+i, n) != n)
-1919       return −1;
-1920   }
-1921   return 0;
-1922 }
-</code></pre><p>功能為把program segment load到pgdir裡</p><ol>
-<li>先檢查是不是page aligned</li>
-<li>呼叫walkpgdir來找到PTE的address</li>
-<li>用pte來計算physical memory address</li>
-<li>使用readi讀取內容後寫入memory裡</li>
-</ol><p><strong>freevm</strong></p><pre><code>2002 void
-2003 freevm(pde_t *pgdir)
-2004 {
-2005   uint i;
-2006 
-2007   if(pgdir == 0)
-2008     panic("freevm: no pgdir");
-2009   deallocuvm(pgdir, KERNBASE, 0);
-2010   for(i = 0; i &lt; NPDENTRIES; i++){
-2011     if(pgdir[i] &amp; PTE_P){
-2012       char * v = P2V(PTE_ADDR(pgdir[i]));
-2013       kfree(v);
-2014     }
-2015   }
-2016   kfree((char*)pgdir);
-2017 }
-</code></pre><p>功能為free掉一個page table和virtual memory pages</p><ol>
-<li>檢查page table是否存在</li>
-<li>呼叫deallocuvm來free掉0~ KERNBASE的virtual memory pages</li>
-<li>free掉整個page table</li>
-</ol><h1 id="4-資料結構"><a class="anchor hidden-xs" href="#4-資料結構" title="4-資料結構"><span class="octicon octicon-link"></span></a>4. 資料結構</h1><p><strong>elf.h</strong></p><pre><code>0950 // Format of an ELF executable file
-0951 
-0952 #define ELF_MAGIC 0x464C457FU  // "\x7FELF" in little endian
-0953 
-0954 // File header
-0955 struct elfhdr {
-0956   uint magic;  // must equal ELF_MAGIC
-0957   uchar elf[12];
-0958   ushort type;//表示文件的類型
-0959   ushort machine;//表示執行程式需要的機器架構
-0960   uint version;//表示版本
-0961   uint entry;//文件的起始點地址
-0962   uint phoff;//Program Header Table相對於文件的位置
-0963   uint shoff;//Section header table相對於文件的位置
-0964   uint flags;//特定CPU標示
-0965   ushort ehsize;//表示ELF header文件的大小
-0966   ushort phentsize;//Program Header Table一個入口的大小
-0967   ushort phnum;//Program Header Table入口的個數
-0968   ushort shentsize;//Section header table一個入口的大小
-0969   ushort shnum;//Section header table入口的個數
-0970   ushort shstrndx;
-0971 };
-0972 
-0973 // Program section header
-0974 struct proghdr {
-0975   uint type;//表示型態
-0976   uint off;//第一個byte在文件中的偏移
-0977   uint vaddr;//第一個byte在memory的virtual address
-0978   uint paddr;//第一個byte在memory的physical address
-0979   uint filesz;//在文件中的長度
-0980   uint memsz;//在memory中的長度
-0981   uint flags;//1:可執行 2:可寫入 3:可讀取
-0982   uint align;//在文件和memory中如何對齊
-0983 };
-0984 
-0985 // Values for Proghdr type
-0986 #define ELF_PROG_LOAD           1
-0987 
-0988 // Flag bits for Proghdr flags
-0989 #define ELF_PROG_FLAG_EXEC      1
-0990 #define ELF_PROG_FLAG_WRITE     2
-0991 #define ELF_PROG_FLAG_READ      4
-</code></pre><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
+    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><h1 id="作業系統-ch4-locking"><a class="anchor hidden-xs" href="#作業系統-ch4-locking" title="作業系統-ch4-locking" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>作業系統 CH4 Locking</h1><h2 id="概要"><a class="anchor hidden-xs" href="#概要" title="概要" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>概要</h2><p>CPU必須避免正在執行的程序與其他執行的程序互相干擾。舉例來說，在IDE磁碟中，磁碟的driver會將未完成的磁碟要求以Link-List的方式記錄，而同時也會有新的要求加入。</p><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span></div><div class="code">struct list *list = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">void</span> insert(int data)
+{
+    struct list *l;
+    l = malloc(sizeof *l);
+    l-&gt;data = data;
+    l-&gt;next = list;
+    list = l;
+}
+</div></div></code></pre><p>上為一般演算法Link-List插入連結的程式碼，但在多工處理的情況下，有可能會同時有兩個的程序同時呼叫到insert function。這樣當兩個程序同時執行為第8行後，兩個程序的l-&gt;next將會指向同一個list，而到第9行較晚執行的程序會直接將先執行程序的List覆蓋過去，而這樣的現象成為<strong>競爭條件(Race Condition)</strong>。因此我們將透過Lock產生<strong>互斥(mutual exclusion)</strong>，讓同一時間只會有一個CPU在執行insert function。</p><h2 id="locking"><a class="anchor hidden-xs" href="#locking" title="locking" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>Locking</h2><h3 id="流程圖："><a class="anchor hidden-xs" href="#流程圖：" title="流程圖：" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>流程圖：</h3><p><img src="https://i.imgur.com/guACiK1.png" alt=""></p><h3 id="資料結構"><a class="anchor hidden-xs" href="#資料結構" title="資料結構" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>資料結構</h3><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span></div><div class="code">struct spinlock {
+uint locked; <span class="hljs-comment">//判斷是否有被佔有(佔有:1，未佔有:0)</span>
+
+char *name; <span class="hljs-comment">//lock名稱</span>
+struct cpu *cpu; <span class="hljs-comment">//佔有lock的CPU</span>
+uint pcs[<span class="hljs-number">10</span>]; <span class="hljs-comment">// 調用呼叫程序的stack</span>
+};
+</div></div></code></pre><h3 id="code："><a class="anchor hidden-xs" href="#code：" title="code：" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>code：</h3><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span>
+<span data-linenumber="11"></span>
+<span data-linenumber="12"></span></div><div class="code"><span class="hljs-keyword">void</span> acquire(struct spinlock *lk)
+{
+    pushcli(); <span class="hljs-comment">// 禁止中斷的程序，避免deadlock</span>
+    <span class="hljs-keyword">if</span>(holding(lk)) <span class="hljs-comment">//判斷CPU是否已有lock</span>
+        panic(<span class="hljs-string">"acquire"</span>);
+
+    <span class="hljs-keyword">while</span>(xchg(&amp;lk−&gt;locked, <span class="hljs-number">1</span>) != <span class="hljs-number">0</span>);<span class="hljs-comment">//如果沒有CPU佔用則獲得lock，有的話則會在迴圈等待lock釋出</span>
+
+    __sync_synchronize();<span class="hljs-comment">//避免程序被重新排序</span>
+    lk−&gt;cpu = mycpu();<span class="hljs-comment">//紀錄現在佔有lock的CPU</span>
+    getcallerpcs(&amp;lk, lk−&gt;pcs);<span class="hljs-comment">//紀錄現在的call stack</span>
+}
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span>
+<span data-linenumber="11"></span>
+<span data-linenumber="12"></span></div><div class="code"><span class="hljs-keyword">void</span> release(struct spinlock *lk)
+{
+    <span class="hljs-keyword">if</span>(!holding(lk))<span class="hljs-comment">//判斷CPU是否已release</span>
+        panic(<span class="hljs-string">"release"</span>);
+
+    lk−&gt;pcs[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<span class="hljs-comment">//釋出lock</span>
+    lk−&gt;cpu = <span class="hljs-number">0</span>;<span class="hljs-comment">//紀錄初始化</span>
+
+    __sync_synchronize();<span class="hljs-comment">//避免程序被重新排序</span>
+    asm volatile(<span class="hljs-string">"movl $0, %0"</span> : <span class="hljs-string">"+m"</span> (lk−&gt;locked) : );
+    popcli();<span class="hljs-comment">//關閉pushcli</span>
+}
+</div></div></code></pre><h2 id="lock問題"><a class="anchor hidden-xs" href="#lock問題" title="lock問題" data-vivaldi-spatnav-clickable="1" style=""><span class="octicon octicon-link"></span></a>Lock問題</h2><p>當我們在程序中使用很多的lock，有可能會導致<strong>互鎖（deadlock）</strong>。舉例來說，假設程序A先後需要lock a &amp; b，程序B先後需要lock b &amp; a。這樣萬一同時間程序A獲得lock a，程序B獲得lock b，這樣程序A和程序B會佔有對方要的lock永遠要不到需要的lock。</p><p>除了上述的狀況外，Deadlock也很容易發生在一中斷處理的程序和另一個正在運行的程序卡在同一個function中的lock。因此在這裡使用了<strong>pushcli</strong>去禁止中斷的程序取得lock，並在release時在<strong>popcli</strong>解開限制。</p><p>然而在少部分的程序為了效率需要長時間的持有lock，而過程中可會有程序需要lock才能維持系統。此時可使用<strong>acquiresleep</strong>來解決這個問題，他將不會禁止中斷的程序取得lock。所以在設計時必須依照各不同的程序去選擇合適的acquire lock方法。</p><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span></div><div class="code">struct sleeplock {
+    uint locked; <span class="hljs-comment">//判斷是否有被佔有(佔有:1，未佔有:0)</span>
+    struct spinlock lk; <span class="hljs-comment">//會被長時間持有的loc</span>
+    char *name; <span class="hljs-comment">// lock的名稱</span>
+    int pid;
+} 
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span></div><div class="code"><span class="hljs-keyword">void</span> acquiresleep(struct sleeplock *lk)
+{
+    acquire(&amp;lk−&gt;lk);<span class="hljs-comment">//將lock給予程序</span>
+    <span class="hljs-keyword">while</span> (lk−&gt;locked) {
+        sleep(lk, &amp;lk−&gt;lk);
+    }
+    lk−&gt;locked = <span class="hljs-number">1</span>;
+    lk−&gt;pid = myproc()−&gt;pid;
+    release(&amp;lk−&gt;lk);
+}
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span>
+<span data-linenumber="11"></span>
+<span data-linenumber="12"></span>
+<span data-linenumber="13"></span>
+<span data-linenumber="14"></span>
+<span data-linenumber="15"></span>
+<span data-linenumber="16"></span>
+<span data-linenumber="17"></span>
+<span data-linenumber="18"></span>
+<span data-linenumber="19"></span>
+<span data-linenumber="20"></span>
+<span data-linenumber="21"></span>
+<span data-linenumber="22"></span>
+<span data-linenumber="23"></span>
+<span data-linenumber="24"></span>
+<span data-linenumber="25"></span></div><div class="code"><span class="hljs-keyword">void</span> sleep(<span class="hljs-keyword">void</span> *chan, struct spinlock *lk)
+{
+    struct proc *p = myproc();
+
+    <span class="hljs-keyword">if</span>(p == <span class="hljs-number">0</span>)<span class="hljs-comment">//判斷是否已經sleep</span>
+        panic(<span class="hljs-string">"sleep"</span>);
+    <span class="hljs-keyword">if</span>(lk == <span class="hljs-number">0</span>)<span class="hljs-comment">//判斷是否為sleeplock</span>
+        panic(<span class="hljs-string">"sleep without lk"</span>);
+    <span class="hljs-comment">//將lock給予新的程序</span>
+    <span class="hljs-keyword">if</span>(lk != &amp;ptable.lock){
+        acquire(&amp;ptable.lock);
+        release(lk);
+    }
+    <span class="hljs-comment">// sleep.</span>
+    p−&gt;chan = chan;
+    p−&gt;state = SLEEPING;
+    sched();
+    p−&gt;chan = <span class="hljs-number">0</span>;
+ 
+    <span class="hljs-comment">//將lock還給原本的程序</span>
+    <span class="hljs-keyword">if</span>(lk != &amp;ptable.lock){
+        release(&amp;ptable.lock);
+        acquire(lk);
+    }
+}
+</div></div></code></pre><p>除了deadlock的問題外，有時compiler會為了更好的效率會改變程序執行的順序，但在有lock的情況下必須要避免這樣的狀況(以防deadlock)，因此透過<strong>sync_synchronize</strong>避免程序被重新排序。</p><h2 id="結論"><a class="anchor hidden-xs" href="#結論" title="結論" data-vivaldi-spatnav-clickable="1"><span class="octicon octicon-link"></span></a>結論</h2><p>lock能夠提供一個系統中類似於優先權份配的效果，但同時也因為其自身的性質而有所限制。在xv6中其實並沒有使用過度繁雜的lock，僅使用在些較為特定的地方（多為硬碟讀寫方面）。因此在使用lock的同時必須考量到其對於其他程序的影響程度以及是否能夠達到所想要的效率。</p><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
                 <i class="fa fa-bars"></i>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
-                <div class="toc"><ul class="nav"><li class=""><a href="#chapter-2-page-tables">Chapter 2. Page tables</a></li><li class=""><a href="#1-原理">1. 原理</a></li><li class=""><a href="#2-程式流程">2. 程式流程</a></li><li><a href="#3-程式碼說明">3. 程式碼說明</a></li><li><a href="#4-資料結構">4. 資料結構</a></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+                <div class="toc"><ul class="nav"><li class=""><a href="#作業系統-ch4-locking" data-vivaldi-spatnav-clickable="1">作業系統 CH4 Locking</a><ul class="nav"><li><a href="#概要" data-vivaldi-spatnav-clickable="1">概要</a></li><li><a href="#locking" data-vivaldi-spatnav-clickable="1">Locking</a><ul class="nav"><li><a href="#流程圖：" data-vivaldi-spatnav-clickable="1">流程圖：</a></li><li><a href="#資料結構" data-vivaldi-spatnav-clickable="1">資料結構</a></li><li><a href="#code：" data-vivaldi-spatnav-clickable="1">code：</a></li></ul></li><li class=""><a href="#lock問題" data-vivaldi-spatnav-clickable="1">Lock問題</a></li><li><a href="#結論" data-vivaldi-spatnav-clickable="1">結論</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#" data-vivaldi-spatnav-clickable="1">Expand all</a><a class="back-to-top" href="#" data-vivaldi-spatnav-clickable="1">Back to top</a><a class="go-to-bottom" href="#" data-vivaldi-spatnav-clickable="1">Go to bottom</a></div>
             </ul>
         </div>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
-        <div class="toc"><ul class="nav"><li class=""><a href="#chapter-2-page-tables">Chapter 2. Page tables</a></li><li class=""><a href="#1-原理">1. 原理</a></li><li class=""><a href="#2-程式流程">2. 程式流程</a></li><li><a href="#3-程式碼說明">3. 程式碼說明</a></li><li><a href="#4-資料結構">4. 資料結構</a></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+        <div class="toc"><ul class="nav"><li class=""><a href="#作業系統-ch4-locking" data-vivaldi-spatnav-clickable="1">作業系統 CH4 Locking</a><ul class="nav"><li><a href="#概要" data-vivaldi-spatnav-clickable="1">概要</a></li><li><a href="#locking" data-vivaldi-spatnav-clickable="1">Locking</a><ul class="nav"><li><a href="#流程圖：" data-vivaldi-spatnav-clickable="1">流程圖：</a></li><li><a href="#資料結構" data-vivaldi-spatnav-clickable="1">資料結構</a></li><li><a href="#code：" data-vivaldi-spatnav-clickable="1">code：</a></li></ul></li><li class=""><a href="#lock問題" data-vivaldi-spatnav-clickable="1">Lock問題</a></li><li><a href="#結論" data-vivaldi-spatnav-clickable="1">結論</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#" data-vivaldi-spatnav-clickable="1">Expand all</a><a class="back-to-top" href="#" data-vivaldi-spatnav-clickable="1">Back to top</a><a class="go-to-bottom" href="#" data-vivaldi-spatnav-clickable="1">Go to bottom</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
