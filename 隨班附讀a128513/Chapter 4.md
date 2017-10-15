@@ -12,7 +12,7 @@ xv6 是運行在多個 processors 的 OS，也就是運行在多個獨立的 CPU
 
 簡單的說，假設有 CPU1 及 CPU2。這兩個 CPU 都會先寫入資料到 a，接著再讀取 a 的資料。這時如果 CPU1 寫入資料到 a 後尚未讀取 a 資料前 CPU2 寫入資料到 a。接著 CPU1 讀取 a 的資料，就會讀取到 CPU2 寫入的資料。這個情況我們就稱作 `Race Condition`。
 
-![image](./Race Condition.png)
+![image](https://github.com/teyushen/106-OS-homework1/blob/gh-pages/隨班附讀a128513/Race%20Condition.png)
 
 
 
