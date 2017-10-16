@@ -1,1 +1,634 @@
-homework not found!!
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        HackMD - Collaborative markdown notes
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,300italic,300|Source+Serif+Pro|Source+Code+Pro:400,300,500&subset=latin,latin-ext);.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\A0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:758px;margin-top:25px;margin-bottom:-25px;color:#777}.ui-toc{position:fixed;bottom:20px;z-index:10000}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,\\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3,Osaka,Meiryo,\\30E1\30A4\30EA\30AA,MS Gothic,"\FF2D\FF33   \30B4\30B7\30C3\30AF",sans-serif}.ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,"\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF",sans-serif}.markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang TC,Microsoft JhengHei,\\5FAE\8EDF\6B63\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,\\5FAE\8EDF\6B63\9ED1UI,sans-serif}.markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang SC,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,\\5FAE\8F6F\96C5\9ED1UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:contain}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}small span{line-height:22px}small .dropdown{display:inline-block}small .dropdown a:focus,small .dropdown a:hover{text-decoration:none}.unselectable{-moz-user-select:none;-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><p>B10415046 林崇恩 XV6第二章報告</p><ul>
+<li>
+<p>Page tables<br>
+操作系統透過Page tables機制實現了對內存空間的控制。<br>
+xv6 主要利用頁表來區分多個地址空間，保護內存。另外，它也使用了一些簡單的技巧，即把不同地址空間的多段內存映射到同一段物理內存（內核部分），在同一地址空間中多次映射同一段物理內存（用戶部分的每一頁都會映射到內核部分），以及通過一個沒有映射的頁面保護用戶棧。</p>
+</li>
+<li>
+<p>Paging hardware<br>
+x86的頁表硬件通過映射機制將虛擬地址和物理地址聯繫起來。<br>
+一個x86頁表就是一個包含2^20（1,048,576）條頁表條目（PTE）的數組。每條PTE包含了一個20位的物理頁號（PPN）和一些標誌位。分頁硬件要找到一個虛擬地址對應的PTE，只需使用其高20位來找到該虛擬地址在頁表中的索引中，然後把其高20位替換為對應PTE的PPN。而低12位是會被分頁硬件原樣複製的。因此在虛擬地址 - 物理地址的翻譯機制下，頁表可以為操作系統提供對一塊塊大小為4096（2 ^ 12）字節的內存片，這樣的一個內存片就是一頁。<br>
+地址的翻譯有兩個步驟。一個頁面在物理內存中像一個兩層的樹。樹的根是一個4096字節的頁目錄，其中包含了1024個類似PTE的條目，但其實每個條目是指向一個頁表頁的引用，而每個頁表頁又是包含1024個32位PTE的數組。分頁硬件使用虛擬地址的高10位來決定對應頁目錄條目。如果想要的條目已經放在了頁目錄中，分頁硬件就會繼續使用接下來的10位來自頁表頁中選擇出對應的PTE。否則，分頁硬件就會拋出錯誤。通常情況下，大部分虛擬地址不會進行映射，而這樣的二級結構就使得頁目錄可以忽略那些沒有任何映射的頁表頁。<br>
+在程式700行有標誌位和頁表硬件相關的結構</p>
+</li>
+<li>
+<p>流程圖：<br>
+<img src="https://i.imgur.com/0AQoHj4.png" alt=""></p>
+</li>
+</ul><p><img src="https://i.imgur.com/HNSDVoD.png" alt=""></p><ul>
+<li>Process address space<br>
+entry中建立的表表已經產生了足夠多的映射來讓內核的C代碼正常運行。但是main還是調用了kvmalloc（1840）立即轉換到新的頁表中，這是因為內核建立的頁表更加精巧地映射了內存空間。</li>
+</ul><pre><code>//功能為機器的內核地址分配一頁表。呼叫setupkvm（）和switchkvm（）。
+創建並切換到一個擁有內核運行所需的KERNBASE以上映射的頁表。
+1839 void
+1840 kvmalloc(void)
+1841 {
+1842 kpgdir = setupkvm();
+1843 switchkvm();
+1844 }
+</code></pre><pre><code>//功能為設置頁面表的內核部分。
+setupkvm（）首先使用kalloc頁框分配函數分配了一頁內存用來存
+放頁目錄（PD），PD每個表項目錄條目（簡稱PDE）指向一張一頁大
+小的頁表PT），PT的每個表項PTE指向一頁大小的內存。
+接著掃描KMAP數組的每個元素，調用mappages（）構建表項。
+1817 pde_t*
+1818 setupkvm(void)
+1819 {
+1820 pde_t *pgdir;
+1821 struct kmap *k;
+1822
+1823 if((pgdir = (pde_t*)kalloc()) == 0)
+1824 return 0;
+1825 memset(pgdir, 0, PGSIZE);
+1826 if (P2V(PHYSTOP) &gt; (void*)DEVSPACE)
+1827 panic("PHYSTOP too high");
+1828 for(k = kmap; k &lt; &amp;kmap[NELEM(kmap)]; k++)
+1829 if(mappages(pgdir, k−&gt;virt, k−&gt;phys_end − k−&gt;phys_start,
+1830 (uint)k−&gt;phys_start, k−&gt;perm) &lt; 0) {
+1831 freevm(pgdir);
+1832 return 0;
+1833 }
+1834 re
+</code></pre><pre><code>//分配一個4096字節的物理內存頁面。返回內核可以使用的指針。如果無法分配內存，則返回0。
+3186 char*
+3187 kalloc(void)
+3188 {
+3189 struct run *r;
+3190
+3191 if(kmem.use_lock)
+3192 acquire(&amp;kmem.lock);
+3193 r = kmem.freelist;
+3194 if(r)
+3195 kmem.freelist = r−&gt;next;
+3196 if(kmem.use_lock)
+3197 release(&amp;kmem.lock);
+3198 return (char*)r;
+3199 }
+</code></pre><pre><code>//這個表定義了內核的映射，它們存在於每個進程的頁表中。
+1804 static struct kmap {
+1805 void *virt;//virtual address
+1806 uint phys_start;//physical address start
+1807 uint phys_end;//physical address end
+1808 int perm;//權限
+1809 } kmap[] = {
+1810 { (void*)KERNBASE, 0, EXTMEM, PTE_W}, // I/O space
+1811 { (void*)KERNLINK, V2P(KERNLINK), V2P(data), 0}, // kern text+rodata
+1812 { (void*)data, V2P(data), PHYSTOP, PTE_W}, // kern data+memory
+1813 { (void*)DEVSPACE, DEVSPACE, 0, PTE_W}, // more devices
+1814 };
+</code></pre><pre><code>//mappages做的工作是在頁表中建立一段虛擬內存到一段物理內存的
+映射。它是在頁的級別，即一頁一頁地建立映射對於每一個待映射虛擬
+地址，mappages調用walkpgdir來找到該地址對應的PTE地址。然後
+初始化該PTE以保存對應物理頁號，許可級別（PTE_W和/或PTE_U）以
+及PTE_P位來標記該PTE是否是有效的。
+// Create PTEs for virtual addresses starting at va that refer to
+// physical addresses starting at pa. va and size might not
+// be page−aligned.
+1759 static int
+1760 mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm)
+1761 {
+1762 char *a, *last;
+1763 pte_t *pte;
+1764
+1765 a = (char*)PGROUNDDOWN((uint)va);
+1766 last = (char*)PGROUNDDOWN(((uint)va) + size − 1);
+1767 for(;;){
+1768 if((pte = walkpgdir(pgdir, a, 1)) == 0)
+1769 return −1;
+1770 if(*pte &amp; PTE_P)
+1771 panic("remap");
+1772 *pte = pa | perm | PTE_P;
+1773 if(a == last)
+1774 break;
+1775 a += PGSIZE;
+1776 pa += PGSIZE;
+1777 }
+1778 return 0;
+1779 }
+</code></pre><pre><code>//walkpgdir模仿x86的分頁硬件為一個虛擬地址尋找PTE的過程。
+返回對應於虛擬地址va的頁表pgdir中的PTE的地址。如果alloc！=
+0，創建任何所需的頁表頁面。
+1734 static pte_t *
+1735 walkpgdir(pde_t *pgdir, const void *va, int alloc)
+1736 {
+1737 pde_t *pde;
+1738 pte_t *pgtab;
+1739
+1740 pde = &amp;pgdir[PDX(va)];
+1741 if(*pde &amp; PTE_P){
+1742 pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
+1743 } else {
+1744 if(!alloc || (pgtab = (pte_t*)kalloc()) == 0)
+1745 return 0;
+1746 // Make sure all those PTE_P bits are zero.
+1747 memset(pgtab, 0, PGSIZE);
+1748 // The permissions here are overly generous, but they can
+1749 // be further restricted by the permissions in the page table
+Sheet 17
+Aug 29 15:52 2017 xv6/vm.c Page 2
+1750 // entries, if necessary.
+1751 *pde = V2P(pgtab) | PTE_P | PTE_W | PTE_U;
+1752 }
+1753 return &amp;pgtab[PTX(va)];
+1754 }
+</code></pre><ul>
+<li>Physical memory allocation</li>
+</ul><pre><code>//初始化分為兩個階段。
+1.main（）調用kinit1（），同時仍然使用entrypgdir將
+entrypgdir映射的頁面放在空閒列表中。
+2.在安裝完整的頁面表之後，main（）在其餘的物理頁面上調用
+kinit2（）並將其映射到所有的內核上。
+kinit1()在前4MB進行了不需要鎖的內存分配。而kinit2()允許
+了鎖的使用，並使得更多的內存可用於分配。
+3130 void
+3131 kinit1(void *vstart, void *vend)
+3132 {
+3133 initlock(&amp;kmem.lock, "kmem");
+3134 kmem.use_lock = 0;
+3135 freerange(vstart, vend);
+3136 }
+3137
+3138 void
+3139 kinit2(void *vstart, void *vend)
+3140 {
+3141 freerange(vstart, vend);
+3142 kmem.use_lock = 1;
+3143 }
+</code></pre><pre><code>//釋放由v指向的物理內存的頁面，通常應該通過調用kalloc（）返回。
+首先將被釋放內存的每一個字節設為1.這樣做能讓這種錯誤的代碼儘
+早崩潰。接下來kfree把v轉換為一個指向結構體struct run的指
+針，在r-&gt; next中保存原有空閒鍊錶的表頭，然後將當前的空閒鍊錶
+設置為r。
+3163 void
+3164 kfree(char *v)
+3165 {
+3166 struct run *r;
+3167
+3168 if((uint)v % PGSIZE || v &lt; end || V2P(v) &gt;= PHYSTOP)
+3169 panic("kfree");
+3170
+3171 // Fill with junk to catch dangling refs.
+3172 memset(v, 1, PGSIZE);
+3173
+3174 if(kmem.use_lock)
+3175 acquire(&amp;kmem.lock);
+3176 r = (struct run*)v;
+3177 r−&gt;next = kmem.freelist;
+3178 kmem.freelist = r;
+3179 if(kmem.use_lock)
+3180 release(&amp;kmem.lock);
+3181 }
+</code></pre><pre><code>//以n字節增長當前進程的內存。成功返回0，失敗時返回-1。
+2557 int
+2558 growproc(int n)
+2559 {
+2560 uint sz;
+2561 struct proc *curproc = myproc();
+2562
+2563 sz = curproc−&gt;sz;
+2564 if(n &gt; 0){
+2565 if((sz = allocuvm(curproc−&gt;pgdir, sz, sz + n)) == 0)
+2566 return −1;
+2567 } else if(n &lt; 0){
+2568 if((sz = deallocuvm(curproc−&gt;pgdir, sz, sz + n)) == 0)
+2569 return −1;
+2570 }
+2571 curproc−&gt;sz = sz;
+2572 switchuvm(curproc);
+2573 return 0;
+2574 }
+</code></pre><pre><code>//透過namei打開二進製文件，檢查文件是否包含ELF二進制代碼，如
+果符合ELF_MAGIC，exec就會認為該二進製文件的結構是正確的。
+接著透過setupkvm分配了一個沒有用戶部分映射的頁表，再透過
+allocuvm為每個ELF段分配內存，然後通過loaduvm把段的內容載入
+內存中。allocuvm會檢查請求分配的虛擬地址是否在KERNBASE之
+下。
+loaduvm透過walkpgdir來找到寫入ELF段的內存的物理地址;透過
+readi來將段的內容從文件中讀出。
+現在exec要分配以及初始化用戶棧了。它只是為了分配一頁內存。
+exec一次性把參數字符串拷貝到棧頂，然後把指向它們的指針保存在
+ustack中。它還會在主參數列表argv的最後一個空指針。這樣，
+ustack中的前三項就是偽造的返回PC，argc和argv指針了。
+另外，這個無法訪問的頁面也讓exec能夠處理那些過龐大的參數;當參
+數過於龐大時，exec用於將參數拷貝到棧上的函數copyout會發現目
+標頁無法訪問，並且返回-1。
+在創建新的內存映像時，如果exec發現了錯誤，比如一個無效的程序
+段，它就會跳轉到標記壞處，釋放這段內存映像，然後返回-1。exec
+必須在確認該調用可以成功後才能釋放原來的內存映像，否則，若原來
+的內存映像被釋放，exec甚至都無法向它返回-1了。執行中的錯誤只
+可能發生在新建內存映像時間。一旦新的內存映像建立完成，exec就
+能裝載新映像而把舊映像釋放。
+6609 int
+6610 exec(char *path, char **argv)
+6611 {
+6612 char *s, *last;
+6613 int i, off;
+6614 uint argc, sz, sp, ustack[3+MAXARG+1];
+6615 struct elfhdr elf;
+6616 struct inode *ip;
+6617 struct proghdr ph;
+6618 pde_t *pgdir, *oldpgdir;
+6619 struct proc *curproc = myproc();
+6620
+6621 begin_op();
+6622
+6623 if((ip = namei(path)) == 0){
+6624 end_op();
+6625 cprintf("exec: fail\n");
+6626 return −1;
+6627 }
+6628 ilock(ip);
+6629 pgdir = 0;
+6630
+6631 // Check ELF header
+6632 if(readi(ip, (char*)&amp;elf, 0, sizeof(elf)) != sizeof(elf))
+6633 goto bad;
+6634 if(elf.magic != ELF_MAGIC)
+6635 goto bad;
+6636
+6637 if((pgdir = setupkvm()) == 0)
+6638 goto bad;
+6639
+6640 // Load program into memory.
+6641 sz = 0;
+6642 for(i=0, off=elf.phoff; i&lt;elf.phnum; i++, off+=sizeof(ph)){
+6643 if(readi(ip, (char*)&amp;ph, off, sizeof(ph)) != sizeof(ph))
+6644 goto bad;
+6645 if(ph.type != ELF_PROG_LOAD)
+6646 continue;
+6647 if(ph.memsz &lt; ph.filesz)
+6648 goto bad;
+6649 if(ph.vaddr + ph.memsz &lt; ph.vaddr)
+6650 goto bad;
+6651 if((sz = allocuvm(pgdir, sz, ph.vaddr + ph.memsz)) == 0)
+6652 goto bad;
+6653 if(ph.vaddr % PGSIZE != 0)
+6654 goto bad;
+6655 if(loaduvm(pgdir, (char*)ph.vaddr, ip, ph.off, ph.filesz) &lt; 0)
+6656 goto bad;
+6657 }
+6658 iunlockput(ip);
+6659 end_op();
+6660 ip = 0;
+6661
+6662 // Allocate two pages at the next page boundary.
+6663 // Make the first inaccessible. Use the second as the user stack.
+6664 sz = PGROUNDUP(sz);
+6665 if((sz = allocuvm(pgdir, sz, sz + 2*PGSIZE)) == 0)
+6666 goto bad;
+6667 clearpteu(pgdir, (char*)(sz − 2*PGSIZE));
+6668 sp = sz;
+6669
+6670 // Push argument strings, prepare rest of stack in ustack.
+6671 for(argc = 0; argv[argc]; argc++) {
+6672 if(argc &gt;= MAXARG)
+6673 goto bad;
+6674 sp = (sp − (strlen(argv[argc]) + 1)) &amp; ~3;
+6675 if(copyout(pgdir, sp, argv[argc], strlen(argv[argc]) + 1) &lt; 0)
+6676 goto bad;
+6677 ustack[3+argc] = sp;
+6678 }
+6679 ustack[3+argc] = 0;
+6680
+6681 ustack[0] = 0xffffffff; // fake return PC
+6682 ustack[1] = argc;
+6683 ustack[2] = sp − (argc+1)*4; // argv pointer
+6684
+6685 sp −= (3+argc+1) * 4;
+6686 if(copyout(pgdir, sp, ustack, (3+argc+1)*4) &lt; 0)
+6687 goto bad;
+6688
+6689 // Save program name for debugging.
+6690 for(last=s=path; *s; s++)
+6691 if(*s == ’/’)
+6692 last = s+1;
+6693 safestrcpy(curproc−&gt;name, last, sizeof(curproc−&gt;name));
+6694
+6695 // Commit to the user image.
+6696 oldpgdir = curproc−&gt;pgdir;
+6697 curproc−&gt;pgdir = pgdir;
+6698 curproc−&gt;sz = sz;
+6699 curproc−&gt;tf−&gt;eip = elf.entry; // main
+6700 curproc−&gt;tf−&gt;esp = sp;
+6701 switchuvm(curproc);
+6702 freevm(oldpgdir);
+6703 return 0;
+6704
+6705 bad:
+6706 if(pgdir)
+6707 freevm(pgdir);
+6708 if(ip){
+6709 iunlockput(ip);
+6710 end_op();
+6711 }
+6712 return −1;
+6713 }
+</code></pre><pre><code>//打開二進制文件，
+5789 struct inode*
+5790 namei(char *path)
+5791 {
+5792 char name[DIRSIZ];
+5793 return namex(path, 0, name);
+5794 }
+</code></pre><pre><code>0954 // 文件頭
+0955 struct elfhdr {
+0956 uint magic; // must equal ELF_MAGIC
+0957 uchar elf[12];
+0958 ushort type;//文件的類型
+0959 ushort machine;//機體架構
+0960 uint version;//版本
+0961 uint entry;//起始點地址
+0962 uint phoff;//Program Header Table相對於文件的位置
+0963 uint shoff;//Section header table相對於文件的位置
+0964 uint flags;//標示
+0965 ushort ehsize;//ELF header文件的大小
+0966 ushort phentsize;//Program Header Table入口的大小
+0967 ushort phnum;//Program Header Table入口的數量
+0968 ushort shentsize;//Section header table入口的大小
+0969 ushort shnum;//Section header table入口的數量
+0970 ushort shstrndx;//
+0971 };
+</code></pre><pre><code>0973 // Program section header
+0974 struct proghdr {
+0975 uint type;//型態
+0976 uint off;//byte在文件的偏移量
+0977 uint vaddr;//byte在記憶體的虛擬地址
+0978 uint paddr;//byte在記憶體的物理地址
+0979 uint filesz;//文件的長度
+0980 uint memsz;//記憶體的長度
+0981 uint flags;//狀態表示
+0982 uint align;//文件和記憶體對齊方式
+0983 };
+</code></pre><pre><code>0952 #define ELF_MAGIC 0x464C457FU // "\x7FELF" in 
+little endian
+</code></pre><pre><code>//分配頁表和物理內存以從oldsz增加到newsz，而不需要頁面對
+齊。返回新的大小或錯誤的0。
+1926 int
+1927 allocuvm(pde_t *pgdir, uint oldsz, uint newsz)
+1928 {
+1929 char *mem;
+1930 uint a;
+1931
+1932 if(newsz &gt;= KERNBASE)
+1933 return 0;
+1934 if(newsz &lt; oldsz)
+1935 return oldsz;
+1936
+1937 a = PGROUNDUP(oldsz);
+1938 for(; a &lt; newsz; a += PGSIZE){
+1939 mem = kalloc();
+1940 if(mem == 0){
+1941 cprintf("allocuvm out of memory\n");
+1942 deallocuvm(pgdir, newsz, oldsz);
+1943 return 0;
+1944 }
+1945 memset(mem, 0, PGSIZE);
+1946 if(mappages(pgdir, (char*)a, PGSIZE, V2P(mem), PTE_W|PTE_U) &lt; 0){
+1947 cprintf("allocuvm out of memory (2)\n");
+1948 deallocuvm(pgdir, newsz, oldsz);
+1949 kfree(mem);
+1950 return 0;
+1951 }
+1952 }
+1953 return newsz;
+1954 }
+</code></pre><pre><code>//將程序段加載到pgdir中。 addr必須是頁面對齊的，並且addr中
+的addr + sz的頁面必須已經被映射。
+1902 int
+1903 loaduvm(pde_t *pgdir, char *addr, struct inode *ip, uint offset, uint sz)
+1904 {
+1905 uint i, pa, n;
+1906 pte_t *pte;
+1907
+1908 if((uint) addr % PGSIZE != 0)
+1909 panic("loaduvm: addr must be page aligned");
+1910 for(i = 0; i &lt; sz; i += PGSIZE){
+1911 if((pte = walkpgdir(pgdir, addr+i, 0)) == 0)
+1912 panic("loaduvm: address should exist");
+1913 pa = PTE_ADDR(*pte);
+1914 if(sz − i &lt; PGSIZE)
+1915 n = sz − i;
+1916 else
+1917 n = PGSIZE;
+1918 if(readi(ip, P2V(pa), offset+i, n) != n)
+1919 return −1;
+1920 }
+1921 return 0;
+1922 }
+</code></pre><pre><code>//釋放頁面表和用戶部分中的所有物理內存頁面。
+2002 void
+2003 freevm(pde_t *pgdir)
+2004 {
+2005 uint i;
+2006
+2007 if(pgdir == 0)
+2008 panic("freevm: no pgdir");
+2009 deallocuvm(pgdir, KERNBASE, 0);
+2010 for(i = 0; i &lt; NPDENTRIES; i++){
+2011 if(pgdir[i] &amp; PTE_P){
+2012 char * v = P2V(PTE_ADDR(pgdir[i]));
+2013 kfree(v);
+2014 }
+2015 }
+2016 kfree((char*)pgdir);
+2017 }
+</code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        <div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
