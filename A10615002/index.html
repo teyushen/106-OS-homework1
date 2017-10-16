@@ -35,15 +35,15 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><p>姓名：张海鲲<br>
-学号：A10615002</p><h1 id="page-tables" style=""><a class="anchor hidden-xs" href="#page-tables" title="page-tables"><span class="octicon octicon-link"></span></a>Page tables</h1><p>1.运作原理<br>
-操作系统通过页表机制实现了对内存空间的控制。x86的指令计算的都是虚拟地址，机器的RAM或者物理内存，则是用物理地址来作标记的，x86 的页表硬件通过映射机制将虚拟地址和物理地址联系起来。<br>
-一个页表在物理内存中像一棵两层的树。树的根是一个4096字节的页目录，其中包含了1024个类似 PTE 的条目，但其实每个条目是指向一个页表页的引用。而每个页表页又是包含1024个32位PTE的数组。分页硬件使用虚拟地址的高10位来决定对应页目录条目。如果想要的条目已经放在了页目录中，分页硬件就会继续使用接下来的10位来从页表页中选择出对应的PTE。否则，分页硬件就会抛出错误。每个PTE都包含一些标志位，说明分页硬件对应的虚拟地址的使用权限，xv6设置了PTE中的PTE_U 、PTE_W、PTE_P标志位。<br>
-每个进程都有自己的页表，xv6会在进程切换时通知分页硬件切换页表。进程的用户内存从0开始，最多能够增长到KERNBASE, 这使得一个进程最多只能使用2GB的内存。xv6在每个进程的页表中都包含了内核运行所需要的所有映射，而这些映射都出现在KERNBASE之上。<br>
-每个进程的页表同时包括用户内存和内核内存的映射，这样当用户通过中断或者系统调用转入内核时就不需要进行页表的转换了。大多数情况下，内核都没有自己的页表，所以内核几乎都是在借用用户进程的页表。xv6保证了每个进程只能使用其自己的内存，并且每个进程所看到的内存都是从虚拟地址0开始的一段连续内存。对于一个进程，xv6只把该进程所使用的内存对应的 PTE 的 PTE_U 设为 1，其他 PTE 则不然，这样就可以实现前者。对于后者，则是让页表把连续的虚拟页映射到实际分配的物理页。<br>
+    <div id="doc" class="markdown-body container-fluid" style="position: relative;"><p>姓名：張海鲲<br>
+學號：A10615002</p><h1 id="page-tables" style=""><a class="anchor hidden-xs" href="#page-tables" title="page-tables"><span class="octicon octicon-link"></span></a>Page tables</h1><p>1.運作原理<br>
+操作系統通過頁表機制實現了對內存空間的控制。x86的指令計算的都是虛擬地址，機器的RAM或者物理內存，則是用物理地址來作標記的，x86 的頁表硬件通過映射機制將虛擬地址和物理地址聯系起來。<br>
+一個頁表在物理內存中像一棵兩層的樹。樹的根是一個4096字節的頁目錄，其中包含了1024個類似 PTE 的條目，但其實每個條目是指向一個頁表頁的引用。而每個頁表頁又是包含1024個32位PTE的數組。分頁硬件使用虛擬地址的高10位來決定對應頁目錄條目。如果想要的條目已經放在了頁目錄中，分頁硬件就會繼續使用接下來的10位來從頁表頁中選擇出對應的PTE。否則，分頁硬件就會抛出錯誤。每個PTE都包含一些標志位，說明分頁硬件對應的虛擬地址的使用權限，xv6設置了PTE中的PTE_U 、PTE_W、PTE_P標志位。<br>
+每個進程都有自己的頁表，xv6會在進程切換時通知分頁硬件切換頁表。進程的用戶內存從0開始，最多能夠增長到KERNBASE, 這使得一個進程最多只能使用2GB的內存。xv6在每個進程的頁表中都包含了內核運行所需要的所有映射，而這些映射都出現在KERNBASE之上。<br>
+每個進程的頁表同時包括用戶內存和內核內存的映射，這樣當用戶通過中斷或者系統調用轉入內核時就不需要進行頁表的轉換了。大多數情況下，內核都沒有自己的頁表，所以內核幾乎都是在借用用戶進程的頁表。xv6保證了每個進程只能使用其自己的內存，並且每個進程所看到的內存都是從虛擬地址0開始的一段連續內存。對于一個進程，xv6只把該進程所使用的內存對應的 PTE 的 PTE_U 設為 1，其他 PTE 則不然，這樣就可以實現前者。對于後者，則是讓頁表把連續的虛擬頁映射到實際分配的物理頁。<br>
 2.程式流程<br>
 <img src="https://i.imgur.com/6Yqmz95.png" alt="">、<br>
-3.代码解释<br>
+3.代碼解釋<br>
 vm.c</p><pre><code>typedef uint pde_t;
 
 pde_t *kpgdir;
@@ -122,13 +122,13 @@ void kvmalloc(void) {
 kpgdir = setupkvm();
 switchkvm();
 }
-</code></pre><p>main 调用 kvmalloc，创建并切换到一个拥有内核运行所需的 KERNBASE 以上映射的页表。这里的大多数工作都是由 setupkvm 完成的。首先，它会分配一页内存来放置页目录，然后调用 mappages 来建立内核需要的映射，这些映射可以在 kmap 数组中找到。这里的映射包括内核的指令和数据，PHYSTOP 以下的物理内存，以及 I/O 设备所占的内存。setupkvm 不会建立任何用户内存的映射，这些映射稍后会建立。</p><p>mappages做的工作是在页表中建立一段虚拟内存到一段物理内存的映射。它是在页的级别，即一页一页地建立映射的。对于每一个待映射虚拟地址，mappages 调用 walkpgdir 来找到该地址对应的 PTE 地址。然后初始化该 PTE 以保存对应物理页号、许可级别（PTE_W 和/或 PTE_U）以及 PTE_P 位来标记该 PTE 是否是有效的。</p><p>walkpgdir 模仿 x86 的分页硬件为一个虚拟地址寻找 PTE 的过程。walkpgdir 通过虚拟地址的前 10 位来找到在页目录中的对应条目，如果该条目不存在，说明要找的页表页尚未分配；如果 alloc 参数被设置了，walkpgdir 会分配页表页并将其物理地址放到页目录中。最后用虚拟地址的接下来 10 位来找到其在页表中的 PTE 地址。<br>
-4.资料结构</p><pre><code>static struct kmap {
-void *virt;            //声明页表的虚拟地址
-uint phys_start;       //声明映射的起始物理地址
-uint phys_end;         //声明映射的结束物理地址
-int perm;              //声明PTE的许可级别
-}</code></pre><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
+</code></pre><p>main 調用 kvmalloc，創建並切換到一個擁有內核運行所需的 KERNBASE 以上映射的頁表。這裏的大多數工作都是由 setupkvm 完成的。首先，它會分配一頁內存來放置頁目錄，然後調用 mappages 來建立內核需要的映射，這些映射可以在 kmap 數組中找到。這裏的映射包括內核的指令和數據，PHYSTOP 以下的物理內存，以及 I/O 設備所占的內存。setupkvm 不會建立任何用戶內存的映射，這些映射稍後會建立。</p><p>mappages做的工作是在頁表中建立一段虛擬內存到一段物理內存的映射。它是在頁的級別，即一頁一頁地建立映射的。對于每一個待映射虛擬地址，mappages 調用 walkpgdir 來找到該地址對應的 PTE 地址。然後初始化該 PTE 以保存對應物理頁號、許可級別（PTE_W 和/或 PTE_U）以及 PTE_P 位來標記該 PTE 是否是有效的。</p><p>walkpgdir 模仿 x86 的分頁硬件為一個虛擬地址尋找 PTE 的過程。walkpgdir 通過虛擬地址的前 10 位來找到在頁目錄中的對應條目，如果該條目不存在，說明要找的頁表頁尚未分配；如果 alloc 參數被設置了，walkpgdir 會分配頁表頁並將其物理地址放到頁目錄中。最後用虛擬地址的接下來 10 位來找到其在頁表中的 PTE 地址。<br>
+4.資料結構</p><pre><code>static struct kmap {
+void *virt;            //聲明頁表的虛擬地址
+uint phys_start;       //聲明映射的起始物理地址
+uint phys_end;         //聲明映射的結束物理地址
+int perm;              //聲明PTE的許可級別
+}</code></pre></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
