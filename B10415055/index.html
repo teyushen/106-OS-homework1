@@ -1,1 +1,72 @@
 homework not found!!
+第二章裡 page table
+page table是允许xv6将不同进程的地址空间复用到单个物理内存/實體記憶體空間上並且同時進行個別保護.
+簡單來說就是運用将相同的内存（内核kernel）在多个地址空间中進行mapping，並繼續對一个地址空间中映射相同的内存多次,形成unmapped page来保护用户堆栈。
+因為作業系統給予用户和内核都可以控制虚拟地址,所以編程的時候页表硬件连接这两种RAM和物理地址，再進行mapping映射每个虚拟地址到物理地址,也就是頁號會對上編址.
+首先判斷該PTE是否存在，有的話返就回該PTE；沒有就call kalloc()建立新的一頁並初始為零，設定flag後返回該PTE。
+CPU的Page Table Entry中除了有PPN外還存放了flags，用來說明對應virtual address的使用權限，PTE_P表示PTE是否在Page Table中，如果不是就不允許使用。PTE_W控制能否寫入此page。PTE_U控制用戶process能否使用，不能的話只有內核可使用
+-----------------------------------------------------------------------------------------------------------------
+分頁之硬件
+當OS拿到VA(虛擬地址)後從前面10bits找到對應process所在的Page Table(找不到就返回錯誤)，再用接下來的10bits找到對應的實體頁面//Step1，
+10bits+10bits=前實體地址的20bits(转换虚拟地址来索引页表找到一个PTE，并用PPN替换地址前20位PTE//Step2。)，
+
+再將原本的VA最後12bits放入後就完成了(12位不变地复制到翻译的物理地址) 。
+當然如果前面的10bits已經存在了那就只是接下去往下10bits从页面索引一個PTE。
+Done.
+-----------------------------------------------------------------------------------------------------------------
+#Note : Physical memory refers to storage cells in DRAM.
+這指令仅使用於虚拟地址，把寻呼硬件paging hardware将转换为物理地址PA，然后发送到DRAM硬件以读取或写入存储。
+ 
+Create address space
+kvmalloc 
+//Page 3,Sheet 18
+kvmalloc(void) {
+pgdir = setupkvm(); //大部分的工作都是由setupkvm開始, 分配壹個內存頁
+switchkvm();
+}
+Step1
+#Note : KERNBASE=mappings needed for kernel to run in every page table process
+使用KERNELBASE创建并切换到页面表上方来运行内核kernel进程地址空间计划所需的映射。
+使用者memory從零開始編制頁號,最大2 GB.
+Step2
+然後再用mappages來安裝kernel所需的翻譯translation转换为一个虚拟地址范围到相应的物理地址范围的页表。
+Step3 //使用walkpgdir查找虚拟地址PTE
+walkpgdir(pde_t *pgdir, const void *va, int alloc) 
+//Page1,Sheet 17
+walkpgdir在查找虚拟地址的PTE时，有模拟到x86分页硬件的动作。 walkpgdir使用虚拟地址的高10位来查找页面目录条目。 如果不存在，则页表页面尚未分配; 如果设置alloc的referrence，那么walkpgdir会分配它并将其物理地址放在页面目录中。然后初始化PTE以保存相关的物理页码，所需的权限(1751)（PTE_W和/或PTE_U）和PTE_P以将PTE标记为有效最后使用虚拟地址的下一个10位来在页表页面中找到PTE的地址。
+Done.
+-----------------------------------------------------------------------------------------------------------------
+physical memory allocation
+//Page1,Sheet31
+函数main用function kinit1 和 kinit2來初始分配器
+Step1
+假定机器PHYSTOP的物理内存，使用内核和PHYSTOP之间的所有内存初始池的可用内存, xv6进行运行时分配run time allocation.
+Step2
+kfree//Page2,Sheet31
+kinit用每一个内存地址every address调用kfree(先前已經freerange把页面添加到分配器的空闲列表中)再结束PHYSTOP。
+3176 r = (struct run*)v; //kfree将v转换为指向struct run的指针
+3177 r−>next = kmem.freelist;// 将空闲列表设置为r
+分配器用虚拟地址将它们的虚拟地址映射到高内存而不是物理地址，这就是为什么kinit使用p2v（PHYSTOP）将PHYSTOP（物理地址）转换为虚拟地址的原因。
+Done.
+ 
+-----------------------------------------------------------------------------------------------------------------
+ 
+ 
+sbrk ;
+//Page4,Sheet25
+一个在运行时需要更多内存（可能是malloc）的进程可以调用sbrk（n）来增加其数据存储器n个字节(n>0 或n<0 都有);
+if(n>0)growproc会分配一个或多个物理页面，并将它们映射到进程地址空间的顶部。
+if(n<0)growproc会从进程的地址空间中取消映射一个或多个页面，并释放相应的物理页面。
+Done.
+-----------------------------------------------------------------------------------------------------------------
+ 
+exec;
+過程需打開二進制轉換namei才可以讀取ELF檔案
+exec通过setupkvm分配到一個新页面表, 再使用loaduvm将每个段加载到内存中,前面還會用到allocuvm為每個單一ELF分配內存.
+更詳細的就是:
+allocuvm检查所请求的虚拟地址是否低于KERNBASE
+loaduvm使用walkpgdir查找寫入ELF段的每一页的分配内存的物理地址并读取。
+在准备新的内存映像期间，如果exec检测到无效程序段的错误，则return-1。如果旧映像消失，则系统调用不能return-1。
+exec中唯一的错误情况发生就是在创建映像的时後。
+當图像完成后，exec便可以安装新图像并释放旧图像。 最后exec 就可以成功return0.
+Done.
